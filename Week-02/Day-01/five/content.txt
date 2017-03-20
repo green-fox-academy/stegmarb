@@ -1,0 +1,2 @@
+Something is written here content2.txt
+I will change the text inside this file
