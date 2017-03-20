@@ -1,0 +1,16 @@
+p {
+  width: 296px;
+  padding: 20px;
+  margin: 0;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+}
+
+p:hover {
+  background-color: #eb6842;
+}
+
+.text p:first-child {
+  border-top: white;
+}

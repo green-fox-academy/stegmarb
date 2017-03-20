@@ -1,0 +1,32 @@
+body {
+  width: 360px;
+}
+
+.red-boxes,
+.blue-boxes {
+  width: 348px;
+  height: 256px;
+  border: 16px solid #4285F4;
+  margin: 6px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: bottom;
+  color: #fff;
+  font-family: arial;
+}
+
+.red,
+.blue {
+  padding-top: 52px;
+  width: 348px;
+  height: 76px;
+  margin: 0px;
+  font-size: 36px;
+}
+
+.red {
+  background: #E67676;
+}
+.blue {
+  background: #A9E6E6;
+}

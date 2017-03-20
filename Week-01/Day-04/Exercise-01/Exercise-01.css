@@ -1,0 +1,11 @@
+.box {
+  color: #005566;
+  border: 5px solid #7DCE94;
+  background-color: #0E91A1;
+  width: 350px;
+  height: 110px;
+  font-size: 36px;
+  margin: 25px 15px;
+  padding: 18px;
+  font-family: arial;
+}
