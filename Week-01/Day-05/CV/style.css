@@ -21,9 +21,22 @@ div img{
   padding-left: 50px;
 }
 
+.address{
+  list-style-image: url(address.png);
+}
+
+.email{
+  list-style-image: url(email.png);
+}
+
+.phone{
+  list-style-image: url(phone.png);
+}
+
 .contacts li{
   line-height: 1.5;
   font-size: 20px;
+  padding-left: 10px;
 }
 
 h1{
