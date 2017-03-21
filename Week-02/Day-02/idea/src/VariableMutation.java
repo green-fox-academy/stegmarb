@@ -37,7 +37,7 @@ public class VariableMutation {
 
     int e = 8;
     // please cube of e's value
-    e = e^e;
+    e = e*e*e;
 
 
     System.out.println(e);
@@ -57,7 +57,7 @@ public class VariableMutation {
 
 
 
-    double h = 1357988018575474;
+    long h = 1357988018575474L;
     // tell if it has 11 as a divisor (print as a boolean)
     System.out.println(h%11 == 0);
 
@@ -66,7 +66,7 @@ public class VariableMutation {
     int i1 = 10;
     int i2 = 3;
     // tell if i1 is higher than i2 squared and smaller than i2 cubed (print as a boolean)
-    System.out.println(i1 > i2^2 && i1 < i2^3);
+    System.out.println(i1 > (i2^2) && i1 < (i2^3));
 
     int j = 1521;
     // tell if j is dividable by 3 or 5 (print as a boolean)
@@ -74,7 +74,7 @@ public class VariableMutation {
 
     String k = "Apple";
     //fill the k variable with its cotnent 4 times
-    k = k*4;
+    k = k + k + k + k;
 
     System.out.println(k);
   }
