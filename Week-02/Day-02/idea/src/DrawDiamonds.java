@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class DrawDiamonds {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Just give me a number");
+    System.out.println("How many lines this diamond should be consist?");
     int num = scanner.nextInt();
 
     for (int i = 0; i <= num; i++) {

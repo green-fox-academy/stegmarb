@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class DrawDiagonal {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Just give me a number");
+    System.out.println("How big square dou you want me to draw?");
     int num = scanner.nextInt();
 
     for (int i = 0; i < num; i++) {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class DrawPyramid {
   public static void main(String[] args) {
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Just give me a number");
+      System.out.println("How big this pyramid should be?");
       int num = scanner.nextInt();
 
       for (int i = 0; i < num; i++) {
