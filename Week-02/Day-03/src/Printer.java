@@ -3,7 +3,7 @@
  */
 public class Printer {
   public static void main(String[] args) {
-    String[][] text = {{"If ", "this ", "peace "}, {"of ", "code ", "is working, "}, {"I will ", "eat my ", "mouse! "}};
+    String[][] text = {{"If ", "this ", "piece "}, {"of ", "code ", "is working, "}, {"I will ", "eat my ", "mouse! "}};
     System.out.println(printer(text));
   }
   public static String printer (String[][] x) {
