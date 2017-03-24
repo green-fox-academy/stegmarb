@@ -14,6 +14,7 @@ public class GuessMyNumber {
     System.out.println("I have made a guess between 1 and " + maxRange + ". Try to find out");
     int userInput = scanner.nextInt();
     String[] returnSentences = {"Nah!!", "No!!!!", "This is not the right answer!", "I have expected better performance of you.", "Concentrate!", "How many chances would you need?", "Almost.....but not.", "May be next guess will be better."};
+    int lives = 5;
     while (guessedNumber != userInput) {
       int randomReturn = rand.nextInt(returnSentences.length);
       if (userInput > maxRange) {
@@ -25,6 +26,7 @@ public class GuessMyNumber {
         } else {
           System.out.println(returnSentences[randomReturn - 1] + " The guessed number is lower");
         }
+
         userInput = scanner.nextInt();
       }
     }
