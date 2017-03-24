@@ -15,13 +15,18 @@ public class GuessMyNumber {
     int userInput = scanner.nextInt();
     String[] returnSentences = {"Nah!!", "No!!!!", "This is not the right answer!", "I have expected better performance of you.", "Concentrate!", "How many chances would you need?", "Almost.....but not.", "May be next guess will be better."};
     while (guessedNumber != userInput) {
-      int randomReturn = rand.nextInt(returnSentences.length-1);
-      if (userInput < guessedNumber) {
-        System.out.println(returnSentences[randomReturn] + " The guessed number is higher");
+      int randomReturn = rand.nextInt(returnSentences.length);
+      if (userInput > maxRange) {
+        System.out.println("Your guess is out of range. Try to stay inside the range.");
+        userInput = scanner.nextInt();
       } else {
-        System.out.println(returnSentences[randomReturn] + " The guessed number is lower");
+        if (userInput < guessedNumber) {
+          System.out.println(returnSentences[randomReturn - 1] + " The guessed number is higher");
+        } else {
+          System.out.println(returnSentences[randomReturn - 1] + " The guessed number is lower");
+        }
+        userInput = scanner.nextInt();
       }
-      userInput = scanner.nextInt();
     }
     System.out.println("Congratulations! You found the number: " + guessedNumber);
   }
