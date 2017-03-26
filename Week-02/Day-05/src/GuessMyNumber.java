@@ -6,15 +6,14 @@ import java.util.Scanner;
  */
 public class GuessMyNumber {
   public static void main(String[] args) {
-    System.out.println("Can you how me how good guesser you are?\nChoose the range by adding the maximum number!" );
+    System.out.println("Can you show me how good guesser you are?\nChoose the range by adding the maximum number!" );
     Scanner scanner = new Scanner(System.in);
     int maxRange = scanner.nextInt();
     Random rand = new Random();
     int guessedNumber = rand.nextInt(maxRange) +1;
     System.out.println("I have made a guess between 1 and " + maxRange + ". Try to find out");
     int userInput = scanner.nextInt();
-    String[] returnSentences = {"Nah!!", "No!!!!", "This is not the right answer!", "I have expected better performance of you.", "Concentrate!", "How many chances would you need?", "Almost.....but not.", "May be next guess will be better."};
-    int lives = 5;
+    String[] returnSentences = {"Nah!!\n", "No!!!!\n", "This is not the right answer!\n", "I have expected better performance of you.\n", "Concentrate!\n", "How many chances would you need?\n", "Almost.....but not.\n", "May be next guess will be better.\n"};
     while (guessedNumber != userInput) {
       int randomReturn = rand.nextInt(returnSentences.length);
       if (userInput > maxRange) {
