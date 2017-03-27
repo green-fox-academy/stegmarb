@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,19 +13,23 @@ import java.util.List;
 public class Doubled {
   public static void main(String[] args) {
     try {
-      String separatedLines = new String();
       ArrayList<String> numbers = new ArrayList<>();
-      Path path = Paths.get("Doubled.txt");
-      List<String> lines = Files.readAllLines(path);
-      String correctedText = new String ();
-      for (int i = 0; i < lines.size(); i++) {
-        for (int j = 0; j < lines.get(i).length(); j+=2) {
-          correctedText = correctedText + lines.get(i).charAt(j);
-        }
-      }
-      System.out.println(correctedText);
+      List<String> lines = Files.readAllLines(Paths.get("Doubled.txt"));
+      System.out.println(duplicationRemover(lines));
+      Path output = Paths.get("Doubled_result.txt");
   } catch (IOException e) {
       System.out.println("Ops! There is something wrong with the file");
     }
+
+  }
+  public static String duplicationRemover (List<String> lines) {
+    String correctedText = new String ();
+    for (int i = 0; i < lines.size(); i++) {
+      for (int j = 0; j < lines.get(i).length(); j+=2) {
+        correctedText += lines.get(i).charAt(j);
+      }
+      correctedText += "\n";
+    }
+    return correctedText;
   }
 }
