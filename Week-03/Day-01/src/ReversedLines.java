@@ -10,21 +10,28 @@ import java.util.List;
  */
 public class ReversedLines {
   public static String filePath = "ReversedLines.txt";
-  public static List<String> goodDirections = new ArrayList<>();
   public static void main(String[] args) {
+    List<String> lines = readLinesFromFile();
+    System.out.println(correctOrder(lines));
+
+  }
+  public static List<String> readLinesFromFile() {
+    List<String> lines = new ArrayList<>();
+    Path path = Paths.get(filePath);
     try {
-      List<String> lines = Files.readAllLines(Paths.get(filePath));
-      String separatedLines = new String();
-      for (int j = 0; j < lines.size(); j++) {
-        for (int i = lines.get(j).length()-1; i >= 0; i--) {
-          separatedLines += lines.get(j).charAt(i);
-        }
-        separatedLines += separatedLines + "\n";
-      }
-      System.out.println(separatedLines);
-    } catch(IOException e) {
-      System.out.println("Ops! There is something wrong with the file");
+      lines = Files.readAllLines(path);
+    } catch (IOException e) {
+      System.out.println("The file is not able to open");
     }
-    ;
+    return lines;
+  }
+  public static String correctOrder (List<String> lines) {
+    String correctOrder = new String();
+    for(int i = 0; i < lines.size(); i++) {
+      for (int j = lines.get(i).length()-1; j > 0; j--) {
+        correctOrder = correctOrder + lines.get(i).charAt(j);
+      }
+    }
+    return correctOrder;
   }
 }

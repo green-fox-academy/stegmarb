@@ -9,7 +9,7 @@ import java.util.List;
  * Created by stegmarb on 2017. 03. 27..
  */
 public class ReversedOrder {
-  public static String filePath = "reversed-order.txt";
+  final public static String filePath = "reversed-order.txt";
   public static void main(String[] args) {
     List<String> lines = readLinesFromFile();
     String finalText = textInString(reOrdered(lines));
