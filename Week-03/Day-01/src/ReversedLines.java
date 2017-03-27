@@ -25,12 +25,14 @@ public class ReversedLines {
     }
     return lines;
   }
-  public static String correctOrder (List<String> lines) {
-    String correctOrder = new String();
+  public static List<String> correctOrder (List<String> lines) {
+    List<String> correctOrder = new ArrayList<>();
     for(int i = 0; i < lines.size(); i++) {
+      String correctOrderString = new String();
       for (int j = lines.get(i).length()-1; j > 0; j--) {
-        correctOrder = correctOrder + lines.get(i).charAt(j);
+        correctOrderString += lines.get(i).charAt(j);
       }
+      correctOrder.add(correctOrderString);
     }
     return correctOrder;
   }
