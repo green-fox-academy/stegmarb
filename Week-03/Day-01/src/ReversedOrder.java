@@ -12,8 +12,8 @@ public class ReversedOrder {
   public static String filePath = "reversed-order.txt";
   public static void main(String[] args) {
     List<String> lines = readLinesFromFile();
-    System.out.println(reOrdered(lines));
-
+    String finalText = textInString(reOrdered(lines));
+    System.out.println(finalText);
   }
   public static List<String> readLinesFromFile () {
     List<String> lines = new ArrayList<>();
@@ -31,5 +31,12 @@ public class ReversedOrder {
       reOrdred.add(lines.get(i));
     }
     return reOrdred;
+  }
+  public static String textInString (List<String> reOrdered) {
+    String textInString = new String();
+    for (int i = 0; i < reOrdered.size(); i++) {
+      textInString += reOrdered.get(i)+ "\n";
+    }
+    return textInString;
   }
 }
