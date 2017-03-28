@@ -16,9 +16,25 @@ public class Lotto {
     List<String> lines = readLinesFromFile();
     List<String> numbers = filterNumbers(lines);
     Map<String, Integer> numberCounts = getNumberCounts(numbers);
-    System.out.println(numberCounts);
+    List<Integer> topFive = getTopFiveCounts(numberCounts);
 
+    for (Map.Entry<String, Integer> entry : numberCounts.entrySet()) {
+      if (topFive.contains(entry.getValue())) {
+        System.out.println(entry.getKey() + "/" + entry.getValue());
+      }
+    }
   }
+  
+  public static List<Integer> getTopFiveCounts(Map<String, Integer> numberCounts) {
+    List<Integer> allCounts = new ArrayList<>();
+    for (Map.Entry<String, Integer> entry : numberCounts.entrySet()) {
+      allCounts.add(entry.getValue());
+    }
+    Collections.sort(allCounts);
+    Collections.reverse(allCounts);
+    return allCounts.subList(0, 5);
+  }
+
   public static Map<String, Integer> getNumberCounts(List<String> allNumbers) {
     Map<String, Integer> numberCounts = new HashMap<String, Integer>();
     for (String number : allNumbers) {
