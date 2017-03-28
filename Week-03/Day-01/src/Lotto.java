@@ -10,37 +10,48 @@ import java.util.stream.Collectors;
  * Created by stegmarb on 2017. 03. 27..
  */
 public class Lotto {
+  public static String filePath = "otos.txt";
+
   public static void main(String[] args) {
-    try {
-      String separatedLines = new String();
-      ArrayList<String> numbers = new ArrayList<>();
-      Path path = Paths.get("otos.txt");
-      List<String> lines = Files.readAllLines(path);
-      for ( String line : lines) {
-        String stringLines = line;
-        String[] separated = stringLines.split(";");
-        for (int i = separated.length-1; i > separated.length-6; i--) {
-            numbers.add(separated[i]);
-        }
-      }
-      ArrayList<Integer> realNumbers = new ArrayList<>();
-      int[] arrayNumbers;
-      for (String number : numbers) {
-        realNumbers.add(Integer.parseInt(number));
-      }
-      Collections.sort(numbers);
+    List<String> lines = readLinesFromFile();
+    List<String> numbers = filterNumbers(lines);
+    Map<String, Integer> numberCounts = getNumberCounts(numbers);
+    System.out.println(numberCounts);
 
-      HashMap<Integer, Integer> countMap = new HashMap<Integer, Integer> ();
-      int count = 0;
-      for (int k = 0; k < realNumbers.size(); k++) {
-        Integer counts = countMap.get(realNumbers.get(k));
-        countMap.put(realNumbers.get(k), counts == null ? 1 : count + 1);
+  }
+  public static Map<String, Integer> getNumberCounts(List<String> allNumbers) {
+    Map<String, Integer> numberCounts = new HashMap<String, Integer>();
+    for (String number : allNumbers) {
+      if (numberCounts.containsKey(number)) {
+        numberCounts.put(number, numberCounts.get(number) + 1);
+      } else {
+        numberCounts.put(number, 1);
       }
-
-      System.out.println(countMap);
-      System.out.println("The most frequent number in lotto's history was ");
-    } catch (IOException e) {
-      System.out.println("Ops! There is something wrong with the file");
     }
+    return numberCounts;
+  }
+
+  public static List<String> filterNumbers(List<String> lines) {
+    List<String> numbers = new ArrayList<>();
+    for (String line : lines) {
+      String stringLines = line;
+      String[] separated = stringLines.split(";");
+      for (int i = separated.length - 1; i > separated.length - 6; i--) {
+        numbers.add(separated[i]);
+      }
+    }
+    return numbers;
+  }
+
+  public static List<String> readLinesFromFile() {
+    List<String> lines = new ArrayList<>();
+    Path path = Paths.get(filePath);
+    try {
+      lines = Files.readAllLines(path);
+    } catch (IOException e) {
+      System.out.println("The file is not able to open");
+    }
+    return lines;
   }
 }
+
