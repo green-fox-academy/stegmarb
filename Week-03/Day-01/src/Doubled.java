@@ -11,17 +11,23 @@ import java.util.List;
  * Created by stegmarb on 2017. 03. 27..
  */
 public class Doubled {
+  public static String filePath = "Doubled.txt";
   public static void main(String[] args) {
-    try {
-      ArrayList<String> numbers = new ArrayList<>();
-      List<String> lines = Files.readAllLines(Paths.get("Doubled.txt"));
-      System.out.println(duplicationRemover(lines));
-      Path output = Paths.get("Doubled_result.txt");
-  } catch (IOException e) {
-      System.out.println("Ops! There is something wrong with the file");
-    }
+    List<String> lines = readLinesFromFile();
+    System.out.println(duplicationRemover(lines));
 
   }
+  public static List<String> readLinesFromFile() {
+    List<String> lines = new ArrayList<>();
+    Path path = Paths.get(filePath);
+    try {
+      lines = Files.readAllLines(path);
+    } catch (IOException e) {
+      System.out.println("The file is not able to open");
+    }
+    return lines;
+  }
+
   public static String duplicationRemover (List<String> lines) {
     String correctedText = new String ();
     for (int i = 0; i < lines.size(); i++) {
