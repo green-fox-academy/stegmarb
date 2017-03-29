@@ -6,15 +6,20 @@ public class String1 {
     String s = "marry xmas to xenon corporation";
     char x = 'x';
     char y = 'y';
-    System.out.println(xToY(s, x, y));
+    System.out.println(xToY(s));
   }
 
-  public static String xToY(String s, char from, char to) {
+  public static String xToY(String s) {
+    char x = 'x';
+    char y = 'y';
     if (s.length() < 1) {
       return s;
     } else {
-      char first = from == s.charAt(0) ? to : s.charAt(0);
-      return first + xToY(s.substring(1), from, to);
+      if (x == s.charAt(0)) {
+        return y + xToY(s.substring(1));
+      } else {
+        return s.charAt(0) + xToY(s.substring(1));
+      }
     }
   }
 }
