@@ -6,13 +6,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by stegmarb on 2017. 03. 29..
  */
 public class FunctionToCenter {
-  public static int dimensionX = 500;
+  public static int dimensionX = 200;
   public static int dimensionY = 500;
   public static void mainDraw(Graphics graphics){
-    // create a line drawing function that takes 2 parameters:
-    // the x and y coordinates of the line's starting point
-    // and draws a line from that point to the center of the canvas.
-    // fill the canvas with lines from the edges, every 20 px, to the center.
     fillWithLines(graphics);
 
 
@@ -41,13 +37,13 @@ public class FunctionToCenter {
   }
   public static void fillWithLines (Graphics g) {
     g.setColor(Color.GREEN);
-    int centerX = dimensionY/2;
-    int centerY = dimensionX/2;
-    for (int i = 0; i < dimensionX; i+= 20) {
-      for (int j = 0; j < dimensionY; j += 20) {
-        if (i == 0 || i >= dimensionX - 20) {
+    int centerX = dimensionX/2;
+    int centerY = dimensionY/2;
+    for (int i = 0; i < dimensionY; i+= 20) {
+      for (int j = 0; j < dimensionX; j += 20) {
+        if (i == 0 || i >= dimensionY - 20) {
           g.drawLine(j, i, centerX, centerY);
-        } else if (j == 0 || j >= dimensionY - 20 ){
+        } else if (j == 0 || j >= dimensionX - 20 ){
           g.drawLine(j, i, centerX, centerY);
         }
       }
