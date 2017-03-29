@@ -13,7 +13,7 @@ public class RaindowClassFunction {
 
 
     //coloredSquare(graphics, 250, Color.RED);
-    fillWithRainbows(graphics, 50);
+    fillWithRainbows(graphics, 20);
 
   }
 

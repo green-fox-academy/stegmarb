@@ -6,8 +6,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by stegmarb on 2017. 03. 29..
  */
 public class LinePlayQuarters {
-  public static int dimensionX = 5000;
-  public static int dimensionY = 5000;
+  public static int dimensionX = 500;
+  public static int dimensionY = 500;
 
   public static void mainDraw(Graphics graphics) {
     // divide the canvas into 4 parts

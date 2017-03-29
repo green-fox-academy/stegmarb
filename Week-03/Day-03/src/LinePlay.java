@@ -4,7 +4,7 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class LinePlay {
-  public static int dimensionX = 500;
+  public static int dimensionX = 800;
   public static int dimensionY = 500;
 
   public static void mainDraw(Graphics graphics) {
