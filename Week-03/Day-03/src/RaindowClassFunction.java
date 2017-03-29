@@ -38,7 +38,7 @@ public class RaindowClassFunction {
     g.fillRect(150-size/2, 150-size/2, size, size);
   }
   public static void fillWithRainbows (Graphics g, int size) {
-    for (int i = 0; i < 1250; i++) {
+    for (int i = 0; i < 9250; i++) {
       int color1 = (int)(Math.random()*255);
       int color3 = (int)(Math.random()*255);
       int color2 = (int)(Math.random()*255);
