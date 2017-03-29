@@ -41,11 +41,13 @@ public class FunctionToCenter {
   }
   public static void fillWithLines (Graphics g) {
     g.setColor(Color.GREEN);
-    int centerX = dimensionX/2;
-    int centerY = dimensionY/2;
+    int centerX = dimensionY/2;
+    int centerY = dimensionX/2;
     for (int i = 0; i < dimensionX; i+= 20) {
       for (int j = 0; j < dimensionY; j += 20) {
         if (i == 0 || i >= dimensionX - 20) {
+          g.drawLine(j, i, centerX, centerY);
+        } else if (j == 0 || j >= dimensionY - 20 ){
           g.drawLine(j, i, centerX, centerY);
         }
       }
