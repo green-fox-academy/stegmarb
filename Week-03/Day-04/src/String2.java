@@ -3,7 +3,7 @@
  */
 public class String2 {
   public static void main(String[] args) {
-    System.out.println(xRemoved("marry xmas to xenon corporation"));
+    System.out.println(xRemoved("marry xmas for xenon corporation"));
   }
   public static String xRemoved (String s) {
     char x = 'x';

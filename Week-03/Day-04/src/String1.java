@@ -3,7 +3,7 @@
  */
 public class String1 {
   public static void main(String[] args) {
-    String s = "marry xmas to xenon corporation";
+    String s = "marry xmas for xenon corporation";
     char x = 'x';
     char y = 'y';
     System.out.println(xToY(s));
