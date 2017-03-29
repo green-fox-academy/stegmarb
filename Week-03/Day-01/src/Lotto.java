@@ -24,7 +24,7 @@ public class Lotto {
       }
     }
   }
-  
+
   public static List<Integer> getTopFiveCounts(Map<String, Integer> numberCounts) {
     List<Integer> allCounts = new ArrayList<>();
     for (Map.Entry<String, Integer> entry : numberCounts.entrySet()) {
