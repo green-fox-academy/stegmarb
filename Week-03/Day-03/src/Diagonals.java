@@ -6,13 +6,13 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by stegmarb on 2017. 03. 29..
  */
 public class Diagonals {
-  public static void mainDraw(Graphics graphics){
+  private static void mainDraw(Graphics graphics){
 
-  graphics.setColor(Color.GREEN);
-  graphics.drawLine(0,0,300,300);
+    graphics.setColor(Color.GREEN);
+    graphics.drawLine(0,0,300,250);
 
-  graphics.setColor(Color.GREEN);
-  graphics.drawLine(0,300,300,0);
+    graphics.setColor(Color.GREEN);
+    graphics.drawLine(0,300,300,0);
 
 
   }
