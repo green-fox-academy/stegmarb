@@ -34,12 +34,15 @@ public class Triangles {
   }
   public static void triangles (Graphics g) {
     int[] xPoints = {dimensionX / 2, dimensionX / 2 + 10, dimensionX / 2 - 10};
-    int[] yPoints = {50, 72, 72};
+    int[] yPoints = {50, 70, 70};
     int nPoints = xPoints.length;
-      for (int i = 1; i < dimensionX / 20; i++) {
-        g.setColor(Color.BLACK);
-        g.drawPolygon(xPoints, yPoints, nPoints);
-
+      for (int i = 1; i < 20; i+=2) {
+          g.setColor(Color.BLACK);
+          g.drawPolygon(xPoints, yPoints, nPoints);
+          yPoints[0] += 40;
+          yPoints[1] += 40;
+          yPoints[2] += 40;
+        }
     }
   }
-}
+
