@@ -8,12 +8,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Hexagon {
   public static int width = 600;
-  public static int height = 600;
+  public static int height =600;
 
   public static void mainDraw(Graphics graphics) {
-    int[] xDots = {150,450,600,450,150,0};
-    int[] yDots = {25,25,300,575,575,300};
-    hexagonDrawer(graphics,xDots, yDots,5);
+    int x = 300;
+    int y = 300;
+    hexagonDrawer(graphics,x,y,200);
 
   }
 
@@ -35,18 +35,31 @@ public class Hexagon {
 
     }
   }
-  public static void hexagonDrawer (Graphics g, int[] x, int[] y, int counter) {
-    int nPoints = x.length;
-    if (counter == 0) {
-      return;
-    } else {
+  public static void hexagonDrawer (Graphics g, int x, int y, int size) {
+    int[] arrayX = new int[6];
+    int[] arrayY = new int[6];
+    for (int i = 0; i < arrayX.length; i++) {
+      if (i==0) {
+        arrayX[i] = x-(size/2);
+        arrayY[i] = y+size;
+      } else if (i == 1) {
+        arrayX[i] = x-size;
+        arrayY[i] = y;
+      } else if (i == 2) {
+        arrayX[i] = x-(size/2);
+        arrayY[i] = y-size;
+      } else if (i == 3) {
+        arrayX[i] = x+(size/2);
+        arrayY[i] = y-size;
+      } else if (i == 4) {
+        arrayX[i] = x+size;
+        arrayY[i] = y;
+      } else if (i == 5) {
+        arrayX[i] = x+(size/2);
+        arrayY[i] = y+size;
+      }
+    }
     g.setColor(Color.BLACK);
-    g.drawPolygon(x, y, nPoints);
-    for (int i = 0; i < x.length; i++) {
-      x[i] = x[i] / 2;
-      y[i] = y[i] / 2;
-      hexagonDrawer(g, x, y, counter-1);
-    }
-    }
+    g.drawPolygon(arrayX,arrayY,arrayX.length);
   }
 }
