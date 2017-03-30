@@ -4,11 +4,11 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class LinePlay {
-  public static int dimensionX = 800;
+  public static int dimensionX = 1000;
   public static int dimensionY = 500;
 
   public static void mainDraw(Graphics graphics) {
-    parabolas(graphics);
+    hyperbolas(graphics);
 
   }
 
@@ -30,7 +30,7 @@ public class LinePlay {
     }
   }
 
-  public static void parabolas(Graphics g) {
+  public static void hyperbolas (Graphics g) {
 
     for (int i = 0; i < dimensionX; i += 20) {
       for (int j = 0; j < dimensionX; j += 20) {

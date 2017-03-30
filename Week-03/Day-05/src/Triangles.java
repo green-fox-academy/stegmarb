@@ -3,17 +3,15 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
+
 public class Triangles {
   public static int width = 600;
   public static int height = 600;
 
   public static void mainDraw(Graphics graphics) {
     int x = 300;
-    int y = 300;
-    triangles(graphics, x, y, 200);
+    int y = 200;
+    triangles(graphics, x, y, 300);
 
 
   }
@@ -38,7 +36,7 @@ public class Triangles {
   }
 
   public static void triangles(Graphics g, int x, int y, int size) {
-    if (size < 5) {
+    if (size < 2) {
       return;
     } else {
       double preside = Math.sqrt((size * size) - ((size / 2) * (size / 2)));

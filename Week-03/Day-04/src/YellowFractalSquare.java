@@ -40,10 +40,10 @@ public class YellowFractalSquare {
     } else {
       g.setColor(Color.BLACK);
       g.drawRect(x, y, width, heigth);
-      fractalThirder(g, x + (width / 3)+1, y+1, width / 3, heigth / 3);
-      fractalThirder(g, x+1, y + (heigth/3)+1, width/3, heigth/3);
-      fractalThirder(g, x + (2*(width/3)+1), y + (heigth/3)+1, width/3, heigth/3);
-      fractalThirder(g, x + (width / 3)+1, y + (2*(heigth/3))+1, width/3, heigth/3);
+      fractalThirder(g, x + (width / 3), y, width / 3, heigth / 3);
+      fractalThirder(g, x, y + (heigth/3), width/3, heigth/3);
+      fractalThirder(g, x + (2*(width/3)), y + (heigth/3), width/3, heigth/3);
+      fractalThirder(g, x + (width / 3), y + (2*(heigth/3)), width/3, heigth/3);
     }
   }
 }
