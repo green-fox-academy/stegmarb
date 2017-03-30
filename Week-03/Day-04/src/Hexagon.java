@@ -7,13 +7,13 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by stegmarb on 2017. 03. 30..
  */
 public class Hexagon {
-  public static int width = 600;
-  public static int height = 600;
+  public static int width = 1000;
+  public static int height = 1000;
 
   public static void mainDraw(Graphics graphics) {
-    int x = 300;
-    int y = 300;
-    hexagonDrawer(graphics, x, y, 200);
+    int x = 500;
+    int y = 500;
+    hexagonDrawer(graphics, x, y, 400);
 
   }
 
