@@ -7,11 +7,11 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * Created by stegmarb on 2017. 03. 30..
  */
 public class YellowFractalSquare {
-  public static int width = 700;
-  public static int height = 700;
+  public static int width = 900;
+  public static int height = 900;
 
   public static void mainDraw(Graphics graphics) {
-    fractalThirder(graphics, 0, 0, width, height, 5);
+    fractalThirder(graphics, 0, 0, width, height);
 
   }
 
@@ -34,20 +34,16 @@ public class YellowFractalSquare {
     }
   }
 
-  public static void fractalThirder(Graphics g, int x, int y, int width, int heigth, int count) {
-    if (count == 0) {
+  public static void fractalThirder(Graphics g, int x, int y, int width, int heigth) {
+    if (width < 3 || heigth < 3) {
       return;
     } else {
       g.setColor(Color.BLACK);
       g.drawRect(x, y, width, heigth);
-      g.drawRect(x + (width / 3)+1, y+1, width / 3, heigth / 3);
-      g.drawRect(x+1, y + (heigth / 3)+1, width / 3, heigth / 3);
-      g.drawRect(x + (2 * (width / 3))+1, y + (heigth / 3)+1, width / 3, heigth / 3);
-      g.drawRect(x + (width / 3)+1, y + (2 * (heigth / 3))+1, width / 3, heigth / 3);
-      fractalThirder(g, x + (width / 3)+1, y+1, width / 3, heigth / 3, count-1);
-      fractalThirder(g, x+1, y + (heigth/3)+1, width/3, heigth/3, count-1);
-      fractalThirder(g, x + (2*(width/3)+1), y + (heigth/3)+1, width/3, heigth/3, count-1);
-      fractalThirder(g, x + (width / 3)+1, y + (2*(heigth/3))+1, width/3, heigth/3, count-1 );
+      fractalThirder(g, x + (width / 3)+1, y+1, width / 3, heigth / 3);
+      fractalThirder(g, x+1, y + (heigth/3)+1, width/3, heigth/3);
+      fractalThirder(g, x + (2*(width/3)+1), y + (heigth/3)+1, width/3, heigth/3);
+      fractalThirder(g, x + (width / 3)+1, y + (2*(heigth/3))+1, width/3, heigth/3);
     }
   }
 }

@@ -13,7 +13,7 @@ public class Hexagon {
   public static void mainDraw(Graphics graphics) {
     int[] xDots = {150,450,600,450,150,0};
     int[] yDots = {25,25,300,575,575,300};
-    hexagonDrawer(graphics,xDots, yDots);
+    hexagonDrawer(graphics,xDots, yDots,5);
 
   }
 
@@ -35,9 +35,18 @@ public class Hexagon {
 
     }
   }
-  public static void hexagonDrawer (Graphics g, int[] x, int[] y) {
+  public static void hexagonDrawer (Graphics g, int[] x, int[] y, int counter) {
     int nPoints = x.length;
+    if (counter == 0) {
+      return;
+    } else {
     g.setColor(Color.BLACK);
     g.drawPolygon(x, y, nPoints);
+    for (int i = 0; i < x.length; i++) {
+      x[i] = x[i] / 2;
+      y[i] = y[i] / 2;
+      hexagonDrawer(g, x, y, counter-1);
+    }
+    }
   }
 }
