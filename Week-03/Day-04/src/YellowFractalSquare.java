@@ -8,16 +8,16 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class YellowFractalSquare {
   public static int width = 700;
-  public static int heigth = 700;
+  public static int height = 700;
 
   public static void mainDraw(Graphics graphics) {
-    fractalThirder(graphics, 0, 0, width, heigth, 5);
+    fractalThirder(graphics, 0, 0, width, height, 5);
 
   }
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(width, heigth));
+    jFrame.setSize(new Dimension(width, height));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
