@@ -8,12 +8,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class Hexagon {
   public static int width = 600;
-  public static int height =600;
+  public static int height = 600;
 
   public static void mainDraw(Graphics graphics) {
     int x = 300;
     int y = 300;
-    hexagonDrawer(graphics,x,y,200);
+    hexagonDrawer(graphics, x, y, 200);
 
   }
 
@@ -35,31 +35,39 @@ public class Hexagon {
 
     }
   }
-  public static void hexagonDrawer (Graphics g, int x, int y, int size) {
-    int[] arrayX = new int[6];
-    int[] arrayY = new int[6];
-    for (int i = 0; i < arrayX.length; i++) {
-      if (i==0) {
-        arrayX[i] = x-(size/2);
-        arrayY[i] = y+size;
-      } else if (i == 1) {
-        arrayX[i] = x-size;
-        arrayY[i] = y;
-      } else if (i == 2) {
-        arrayX[i] = x-(size/2);
-        arrayY[i] = y-size;
-      } else if (i == 3) {
-        arrayX[i] = x+(size/2);
-        arrayY[i] = y-size;
-      } else if (i == 4) {
-        arrayX[i] = x+size;
-        arrayY[i] = y;
-      } else if (i == 5) {
-        arrayX[i] = x+(size/2);
-        arrayY[i] = y+size;
+
+  public static void hexagonDrawer(Graphics g, int x, int y, int size) {
+    if (size < 5) {
+      return;
+    } else {
+      int[] arrayX = new int[6];
+      int[] arrayY = new int[6];
+      for (int i = 0; i < arrayX.length; i++) {
+        if (i == 0) {
+          arrayX[i] = x - (size / 2);
+          arrayY[i] = y + size;
+        } else if (i == 1) {
+          arrayX[i] = x - size;
+          arrayY[i] = y;
+        } else if (i == 2) {
+          arrayX[i] = x - (size / 2);
+          arrayY[i] = y - size;
+        } else if (i == 3) {
+          arrayX[i] = x + (size / 2);
+          arrayY[i] = y - size;
+        } else if (i == 4) {
+          arrayX[i] = x + size;
+          arrayY[i] = y;
+        } else if (i == 5) {
+          arrayX[i] = x + (size / 2);
+          arrayY[i] = y + size;
+        }
       }
+      g.setColor(Color.BLACK);
+      g.drawPolygon(arrayX, arrayY, arrayX.length);
+      hexagonDrawer(g, x - (size / 4), y - (size / 2), size / 2);
+      hexagonDrawer(g, x - (size / 4), y + (size / 2), size / 2);
+      hexagonDrawer(g, x + (size / 2), y, size / 2);
     }
-    g.setColor(Color.BLACK);
-    g.drawPolygon(arrayX,arrayY,arrayX.length);
   }
 }
