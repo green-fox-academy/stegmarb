@@ -3,13 +3,13 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Circles {
-  public static int width = 600;
-  public static int height = 600;
+  public static int width = 900;
+  public static int height = 900;
 
   public static void mainDraw(Graphics graphics) {
     int xCoordinates = 25;
     int yCoordinates = 25;
-    int size = 500;
+    int size = 800;
     circles(graphics, xCoordinates, yCoordinates, size);
   }
 

@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-/**
- * Created by stegmarb on 2017. 03. 31..
- */
 public class KochLine {
   public static int width = 600;
   public static int height = 600;

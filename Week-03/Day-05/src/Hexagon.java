@@ -25,6 +25,7 @@ public class Hexagon {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
+      this.setBackground(Color.WHITE);
       mainDraw(graphics);
     }
   }

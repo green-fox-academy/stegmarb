@@ -5,9 +5,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by stegmarb on 2017. 03. 27..
- */
 public class ReversedOrder {
   final public static String filePath = "reversed-order.txt";
   public static void main(String[] args) {

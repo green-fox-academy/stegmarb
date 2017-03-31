@@ -3,7 +3,7 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SierpinskyCarpet {
-  public static int dimension = 1000;
+  public static int dimension = 800;
   public static void mainDraw(Graphics graphics) {
     patternDrawer(graphics, 0, 0,dimension);
   }

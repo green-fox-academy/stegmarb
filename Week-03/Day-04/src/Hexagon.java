@@ -5,7 +5,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Hexagon {
   public static int width = 1000;
   public static int height = 1000;
-
   public static void mainDraw(Graphics graphics) {
     int x = 500;
     int y = 500;
