@@ -32,7 +32,7 @@ public class Circles {
   }
 
   public static void circles(Graphics g, int x, int y, int size) {
-    if (size < 5) {
+    if (size < 10) {
       return;
     } else {
       g.setColor(Color.BLACK);
