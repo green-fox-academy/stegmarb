@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SierpinskyCarpet {
-  public static int dimension = 1000;
+public class SquareGrid {
+  public static int dimension = 600;
   public static void mainDraw(Graphics graphics) {
     patternDrawer(graphics, 0, 0,dimension);
   }
@@ -27,19 +27,17 @@ public class SierpinskyCarpet {
   }
 
   public static void patternDrawer(Graphics g, int x, int y, int dimension) {
-    if (dimension < 2) {
+    Graphics2D g2 = (Graphics2D) g;
+    if (dimension < 40) {
       return;
     } else {
       g.setColor(Color.BLACK);
-      g.fillRect((x + dimension/3), y + (dimension/3), dimension / 3, dimension / 3);
-      patternDrawer(g, x, y, dimension/3 );
-      patternDrawer(g, (x + (dimension/3)), y, dimension/3);
-      patternDrawer(g, (x + (2*dimension/3)) , y, dimension/3);
-      patternDrawer(g, x, (y + (dimension/3)), dimension/3);
-      patternDrawer(g, (x + (2*dimension/3)), (y + (dimension/3)), dimension/3);
-      patternDrawer(g, x, (y + (2*dimension/3)), dimension/3);
-      patternDrawer(g, (x + (dimension/3)), (y + (2*dimension/3)), dimension/3);
-      patternDrawer(g, (x + (2*dimension/3)), (y + (2*dimension/3)), dimension/3);
+      g2.setStroke(new BasicStroke(dimension/35));
+      g.drawRect((x + dimension/4), y + (dimension/4), dimension / 2, dimension / 2);
+      patternDrawer(g, x, y, dimension/2);
+      patternDrawer(g, x + (dimension/2), y, dimension/2);
+      patternDrawer(g, x, y + (dimension/2), dimension/2);
+      patternDrawer(g, x + (dimension/2), y + (dimension/2), dimension/2);
     }
   }
 }

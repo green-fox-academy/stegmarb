@@ -11,7 +11,7 @@ public class Hexagon {
     int size = 500;
     hexagon(graphics, x, y, size);
   }
-  //    Don't touch the code below
+
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(dimensionX, dimensionY));
