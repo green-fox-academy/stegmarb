@@ -1,6 +1,3 @@
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
 public class Counter {
   public static void main(String[] args) {
     counter(15);

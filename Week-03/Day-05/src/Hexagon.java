@@ -1,20 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Hexagon {
   public static int dimensionX = 1000;
   public static int dimensionY = 1000;
-
   public static void mainDraw(Graphics graphics) {
     int x = 500;
     int y = 500;
     int size = 500;
     hexagon(graphics, x, y, size);
-
   }
-
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");

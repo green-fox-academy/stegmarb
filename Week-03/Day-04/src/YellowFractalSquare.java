@@ -1,18 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
 public class YellowFractalSquare {
   public static int width = 900;
   public static int height = 900;
 
   public static void mainDraw(Graphics graphics) {
     fractalThirder(graphics, 0, 0, width, height);
-
   }
 
   public static void main(String[] args) {
@@ -30,7 +25,6 @@ public class YellowFractalSquare {
       super.paintComponent(graphics);
       this.setBackground(Color.YELLOW);
       mainDraw(graphics);
-
     }
   }
 

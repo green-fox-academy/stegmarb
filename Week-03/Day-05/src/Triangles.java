@@ -1,19 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-
 public class Triangles {
-  public static int width = 600;
-  public static int height = 600;
-
+  public static int width = 1000;
+  public static int height = 1000;
   public static void mainDraw(Graphics graphics) {
-    int x = 300;
-    int y = 200;
-    triangles(graphics, x, y, 300);
-
-
+    int x = 500;
+    int y = 300;
+    triangles(graphics, x, y, 500);
   }
 
   public static void main(String[] args) {
@@ -31,10 +26,8 @@ public class Triangles {
       super.paintComponent(graphics);
       this.setBackground(Color.WHITE);
       mainDraw(graphics);
-
     }
   }
-
   public static void triangles(Graphics g, int x, int y, int size) {
     if (size < 2) {
       return;

@@ -1,10 +1,8 @@
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
 public class String2 {
   public static void main(String[] args) {
     System.out.println(xRemoved("marry xmas for xenon corporation"));
   }
+
   public static String xRemoved (String s) {
     char x = 'x';
     if (s.length() < 1) {
@@ -17,5 +15,4 @@ public class String2 {
       }
     }
   }
-
 }

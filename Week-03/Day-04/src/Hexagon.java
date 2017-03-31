@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
 public class Hexagon {
   public static int width = 1000;
   public static int height = 1000;
@@ -14,7 +10,6 @@ public class Hexagon {
     int x = 500;
     int y = 500;
     hexagonDrawer(graphics, x, y, 400);
-
   }
 
   public static void main(String[] args) {
@@ -32,12 +27,11 @@ public class Hexagon {
       super.paintComponent(graphics);
       this.setBackground(Color.WHITE);
       mainDraw(graphics);
-
     }
   }
 
   public static void hexagonDrawer(Graphics g, int x, int y, int size) {
-    if (size < 5) {
+    if (size < 2) {
       return;
     } else {
       int[] arrayX = new int[6];

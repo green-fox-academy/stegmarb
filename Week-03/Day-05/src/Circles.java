@@ -1,18 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
-
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-/**
- * Created by stegmarb on 2017. 03. 30..
- */
 public class Circles {
   public static int width = 600;
   public static int height = 600;
 
   public static void mainDraw(Graphics graphics) {
-    circles(graphics, 0, 0, 200);
-
+    int xCoordinates = 25;
+    int yCoordinates = 25;
+    int size = 500;
+    circles(graphics, xCoordinates, yCoordinates, size);
   }
 
   public static void main(String[] args) {
@@ -30,13 +28,19 @@ public class Circles {
       super.paintComponent(graphics);
       this.setBackground(Color.WHITE);
       mainDraw(graphics);
-
     }
   }
 
   public static void circles(Graphics g, int x, int y, int size) {
-    g.setColor(Color.BLACK);
-    g.drawOval(x, y, size, size);
+    if (size < 5) {
+      return;
+    } else {
+      g.setColor(Color.BLACK);
+      g.drawOval(x, y, size, size);
+      circles(g, (x + size / 4), y, size / 2);
+      circles(g, (x + size / 20), y+ (4 * size / 10), size/2);
+      circles(g, (x + (9 *size / 20)), y+ (4 * size / 10), size/2);
+    }
   }
 }
 
