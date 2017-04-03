@@ -27,8 +27,13 @@ public class KochLine {
       mainDraw(graphics);
     }
   }
-  public static void kochLine (Graphics g) {
-   g.setColor(Color.BLACK);
-   g.drawLine(0, height/2, width, height/2);
+
+  public static void kochLine(Graphics g, int x1, int y1, int x2, int y2, boolean start) {
+    if (start == true) {
+      g.setColor(Color.BLACK);
+      g.drawLine(x1, y1, x2, y2);
+    } else {
+
+    }
   }
 }
