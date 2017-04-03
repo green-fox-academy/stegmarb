@@ -1,4 +1,3 @@
-
 public class Animal {
   private int hunger;
   private int thirst;

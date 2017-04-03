@@ -1,4 +1,3 @@
-
 public class Car {
   public double gasAmount;
   public double capaciy;
@@ -7,7 +6,4 @@ public class Car {
     gasAmount = 0;
     capaciy = 100;
   }
-
-
-
 }

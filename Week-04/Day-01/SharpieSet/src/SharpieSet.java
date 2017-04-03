@@ -31,6 +31,5 @@ public class SharpieSet {
     System.out.println(nevermind.countUsable());
     nevermind.removeTrash();
     System.out.println(nevermind.sharpies.size());
-
   }
 }

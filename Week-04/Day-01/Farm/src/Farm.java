@@ -20,7 +20,6 @@ public class Farm {
       if (animals.get(i).getHungerValue() > countHunger) {
         countHunger = animals.get(i).getHungerValue();
         position = i;
-
       }
     }
     animals.remove(position);

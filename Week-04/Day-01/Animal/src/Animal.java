@@ -1,11 +1,6 @@
-
 public class Animal {
   private int hunger;
   private int thirst;
-
-//  public Animal() {
-//    this(50,50);
-//  }
 
   public Animal() {
     hunger = 50;

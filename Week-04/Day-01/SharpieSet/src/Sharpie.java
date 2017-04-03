@@ -1,4 +1,3 @@
-
 public class Sharpie {
   private String color;
   private double width;
@@ -17,5 +16,4 @@ public class Sharpie {
   public void use() {
     inkAmount--;
   }
-
 }

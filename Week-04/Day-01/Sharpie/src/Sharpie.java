@@ -1,4 +1,3 @@
-
 public class Sharpie {
   private String color;
   private double width;
