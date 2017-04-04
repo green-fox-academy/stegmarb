@@ -4,7 +4,7 @@ public class Person {
   private String gender;
 
   public void introduce() {
-    System.out.println("Hi! I'm " + name + ", a " + age + "old " + gender + ".");
+    System.out.println("Hi! I'm " + name + ", a " + age + " years old " + gender + ".");
   }
 
   public void getGoal() {
