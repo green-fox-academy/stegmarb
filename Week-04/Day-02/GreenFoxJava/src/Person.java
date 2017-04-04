@@ -1,7 +1,7 @@
 public class Person {
-  protected String name;
-  protected int age;
-  protected String gender;
+  private String name;
+  private int age;
+  private String gender;
 
   public void introduce() {
     System.out.println("Hi! I'm " + name + ", a " + age + "old " + gender + ".");
@@ -19,5 +19,29 @@ public class Person {
 
   public Person() {
     this("Jane Doe", 30, "female");
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public String getGender() {
+    return gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
   }
 }
