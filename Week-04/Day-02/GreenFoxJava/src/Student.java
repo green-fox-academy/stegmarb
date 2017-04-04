@@ -10,8 +10,8 @@ public class Student extends Person {
     System.out.println( "Hi, I'm " + getName() + " a " + getAge() + " years old " + getGender() + " from " + previousOrganization + " who skipped " + skippedDays + " days from the course already.");
   }
 
-  public void skipDays() {
-    skippedDays++;
+  public void skipDays(int numberOfDays) {
+    skippedDays+=numberOfDays;
   }
 
   public Student(String name, int age, String gender, String previousOrganization) {
