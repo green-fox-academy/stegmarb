@@ -11,5 +11,9 @@ public class Demonstration {
 
 
     System.out.println(garden.writeContent());
+    garden.water(40);
+    System.out.println(garden.writeContent());
+    garden.water(70);
+    System.out.println(garden.writeContent());
   }
 }

@@ -25,6 +25,21 @@ public class Garden {
     }
     return print;
   }
+  
+  public void water(int waterAmount) {
+    System.out.println("Watering with " + waterAmount + " water.");
+    int count = 0;
+    for (int i = 0; i < plants.size(); i++) {
+      if (isThirsty(i) == true) {
+        count++;
+      }
+    }
+    for (int j = 0; j < plants.size(); j++) {
+      if(isThirsty(j) == true) {
+        plants.get(j).setThirst(waterAmount/count);
+      }
+    }
+  }
 
   public Garden() {
     this.plants = new ArrayList<>();
