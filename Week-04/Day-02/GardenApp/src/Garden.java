@@ -26,17 +26,18 @@ public class Garden {
     return print;
   }
   
-  public void water(int waterAmount) {
+  public void water(double waterAmount) {
     System.out.println("Watering with " + waterAmount + " water.");
-    int count = 0;
+    double count = 0;
     for (int i = 0; i < plants.size(); i++) {
-      if (isThirsty(i) == true) {
+      if (isThirsty(i)) {
         count++;
       }
     }
     for (int j = 0; j < plants.size(); j++) {
-      if(isThirsty(j) == true) {
-        plants.get(j).setThirst(waterAmount/count);
+      if(isThirsty(j)) {
+        double addedWater = plants.get(j).getThirst() + waterAmount/count*plants.get(j).getAbsorption();
+        plants.get(j).setThirst(addedWater);
       }
     }
   }
@@ -44,6 +45,15 @@ public class Garden {
   public Garden() {
     this.plants = new ArrayList<>();
   }
+
+  //  This pseudo method can print the values of thirst variable.
+
+//  public void getValues() {
+//    for (int i = 0; i < plants.size() ; i++) {
+//      System.out.println(plants.get(i).getThirst());
+//    }
+//
+//  }
 
 }
 

@@ -1,32 +1,19 @@
 public class Plant {
-  private int thirst;
+  private double thirst;
   private String color;
   private String name;
+  private double absorption;
 
-  public Plant() {
-    this.thirst = 3;
-    color = "blue";
-  }
-
-  public Plant(String color, int thirst) {
-    this.color = color;
-    this.thirst = thirst;
-  }
-
-  public int getThirst() {
+  public double getThirst() {
     return thirst;
   }
 
-  public void setThirst(int thirst) {
+  public void setThirst(double thirst) {
     this.thirst = thirst;
   }
 
   public String getColor() {
     return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
   }
 
   public String getName() {
@@ -35,5 +22,18 @@ public class Plant {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public double getAbsorption() {
+    return absorption;
+  }
+
+  public void setAbsorption(double absorption) {
+    this.absorption = absorption;
+  }
+
+  public Plant(String color, int thirst) {
+    this.color = color;
+    this.thirst = thirst;
   }
 }
