@@ -13,32 +13,43 @@ class ExtensionTest {
 
   @Test
   void testAdd_2and3is5() {
-    assertEquals(5, extension.add(2, 3));
+    int a = 3;
+    int b = 3;
+    assertEquals(6, extension.add(a, b));
   }
 
   @Test
   void testAdd_1and4is5() {
-    assertEquals(5, extension.add(1, 4));
+    int a = 4;
+    int b = 4;
+    assertEquals(8, extension.add(a, b));
   }
 
   @Test
   void testMaxOfThree_first() {
-    assertEquals(5, extension.maxOfThree(5, 4, 3));
+    int a = 12;
+    int b = 6;
+    int c = 15;
+    assertEquals(15, extension.maxOfThree(a, b, c));
   }
 
   @Test
+
   void testMaxOfThree_third() {
-    assertEquals(5, extension.maxOfThree(3, 4, 5));
+    int a = 6;
+    int b = 15;
+    int c = 11;
+    assertEquals(15, extension.maxOfThree(a, b, c));
   }
 
   @Test
   void testMedian_four() {
-    assertEquals(5, extension.median(Arrays.asList(7,5,3,5)));
+    assertEquals(10, extension.median(Arrays.asList(12,7,8,13)));
   }
 
   @Test
   void testMedian_five() {
-    assertEquals(3, extension.median(Arrays.asList(1,2,3,4,5)));
+    assertEquals(4, extension.median(Arrays.asList(6,2,3,4,5)));
   }
 
   @Test
