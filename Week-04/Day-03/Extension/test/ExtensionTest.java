@@ -44,12 +44,12 @@ class ExtensionTest {
 
   @Test
   void testMedian_four() {
-    assertEquals(10, extension.median(Arrays.asList(12,7,8,13)));
+    assertEquals(9, extension.median(Arrays.asList(6,7,8,10,12,15)));
   }
 
   @Test
   void testMedian_five() {
-    assertEquals(4, extension.median(Arrays.asList(6,2,3,4,5)));
+    assertEquals(4, extension.median(Arrays.asList(1,2,3,4,5,6,7)));
   }
 
   @Test
@@ -64,11 +64,11 @@ class ExtensionTest {
 
   @Test
   void testTranslate_bemutatkozik() {
-    assertEquals("bevemuvutavatkovozivik", extension.translate("bemutatkozik"));
+    assertEquals("kevereveskevedevelevem", extension.translate("kereskedelem"));
   }
 
   @Test
   void testTranslate_kolbice() {
-    assertEquals("lavagovopuvus", extension.translate("lagopus"));
+    assertEquals("kovolbiviceve", extension.translate("kolbice"));
   }
 }

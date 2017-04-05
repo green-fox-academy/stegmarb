@@ -3,18 +3,27 @@ import java.util.List;
 
 public class Extension {
   int add(int a, int b) {
-    return a+b;
+    return a + b;
   }
 
   int maxOfThree(int a, int b, int c) {
-    if (a > b)
+    if (a > b && a > c) {
       return a;
-    else
+    } else if (b > c) {
+      return b;
+    } else {
       return c;
+    }
   }
 
-  int median(List<Integer> pool) {
-    return pool.get((pool.size()-1)/2);
+  double median(List<Integer> pool) {
+    if (pool.size() % 2 == 1) {
+      return pool.get((pool.size() / 2));
+    } else {
+      double one = pool.get(pool.size() / 2);
+      double two = pool.get(pool.size() / 2 - 1);
+      return (one + two) / 2;
+    }
   }
 
   boolean isVowel(char c) {
@@ -23,15 +32,16 @@ public class Extension {
 
   String translate(String hungarian) {
     String teve = hungarian;
-    int length = teve.length();
-    for (int i = 0; i < length; i++) {
+    String translated = "";
+    for (int i = 0; i < hungarian.length(); i++) {
       char c = teve.charAt(i);
-      if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split(""+c));
-        i+=2;
-        length+=2;
+      if (!isVowel(c)) {
+        translated+=c;
+      } else {
+        translated+=(c+"v"+c);
       }
     }
-    return teve;
+    return translated;
   }
 }
+
