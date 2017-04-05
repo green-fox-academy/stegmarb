@@ -1,11 +1,23 @@
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class LetterCounterTest {
-  private LetterCounter string;
-  private String countableSentence;
+  private LetterCounter hashMap;
+  private String testString = "fffffkkkkklll";
+
 
   @Before
-  public void instatiation() {
-    string = new LetterCounter(countableSentence);
+  public void instantiation() {
+    hashMap = new LetterCounter(testString);
+  }
+
+  @Test
+  public void testCounter() {
+    hashMap.setSentence(testString);
+    hashMap.counter();
+    assertTrue(hashMap.getLetterNumber().get('k') == 5);
+
   }
 }
