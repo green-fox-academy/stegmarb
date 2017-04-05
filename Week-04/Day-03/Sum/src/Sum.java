@@ -18,6 +18,9 @@ public class Sum {
   }
 
   public int sumElements() {
+    if (intList.isEmpty()) {
+      return 0;
+    }
     int sum = 0;
     for (int i = 0; i < intList.size(); i++) {
       sum+=intList.get(i);

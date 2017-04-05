@@ -39,7 +39,6 @@ public Sum sum;
 
   @Test
   public void testIfNull() {
-    sum = null;
-    assertNull(sum);
+    assertEquals(sum.sumElements(), 0);
   }
 }
