@@ -1,13 +1,20 @@
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class SumTest {
+public Sum sum;
 
+  @Before
+  public void instantiateObject() {
+    sum = new Sum();
+  }
 
   @Test
   public void testListFiller() {
-    Sum sum = new Sum();
     int size = 100;
     sum.listFiller(size);
     assertTrue(sum.getIntList().size() == size);
@@ -15,8 +22,11 @@ public class SumTest {
 
   @Test
   public void testSumMethod() {
-    Sum sum = new Sum();
     assertTrue(sum.listFiller(10) == sum.sumElements());
   }
 
+  @Test
+  public void testIfNoElements() {
+    assertTrue(sum.sumElements() == 0);
+  }
 }
