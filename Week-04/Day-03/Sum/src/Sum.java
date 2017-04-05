@@ -13,6 +13,10 @@ public class Sum {
     return sumWayOne;
   }
 
+  public void addElementSeparately(int number) {
+    intList.add(number);
+  }
+
   public int sumElements() {
     int sum = 0;
     for (int i = 0; i < intList.size(); i++) {

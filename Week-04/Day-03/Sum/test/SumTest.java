@@ -29,4 +29,17 @@ public Sum sum;
   public void testIfNoElements() {
     assertTrue(sum.sumElements() == 0);
   }
+
+  @Test
+  public void testIfOneElement() {
+    int number = 18;
+    sum.addElementSeparately(number);
+    assertEquals(sum.sumElements(),number);
+  }
+
+  @Test
+  public void testIfNull() {
+    sum = null;
+    assertNull(sum);
+  }
 }
