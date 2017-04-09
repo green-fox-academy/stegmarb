@@ -1,8 +1,6 @@
-public class F35 extends Airctaft{
+public class F35 extends Aircraft {
 
   public F35() {
     super(12, 50);
-
-
   }
 }
