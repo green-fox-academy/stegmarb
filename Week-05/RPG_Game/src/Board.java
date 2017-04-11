@@ -151,7 +151,7 @@ public class Board extends JComponent implements KeyListener {
 //    }
 
     public boolean isNotAvailable() {
-    if (map[rowN][colN] == 1 || rowN < 0 || rowN >= map.length || colN < 0 || colN >= map[rowN].length) {
+    if ((rowN < 0 || rowN >= map.length || colN < 0 || colN >= map[0].length) || map[rowN][colN] == 1) {
       return true;
     } else {
       return false;
