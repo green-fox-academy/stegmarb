@@ -9,17 +9,8 @@ public class Board extends JComponent implements KeyListener {
   int direction;
   int testBoxX;
   int testBoxY;
-  int[][] map = {{0,0,0,1,0,1,0,0,0,0},
-                 {0,0,0,1,0,1,0,1,1,0},
-                 {0,1,1,1,0,1,0,1,1,0},
-                 {0,0,0,0,0,1,0,0,0,0},
-                 {1,1,1,1,0,1,1,1,1,0},
-                 {0,1,0,1,0,0,0,0,1,0},
-                 {0,1,0,1,0,1,1,0,1,0},
-                 {0,0,0,0,0,1,1,0,1,0},
-                 {0,1,1,1,0,0,0,0,1,0},
-                 {0,0,0,1,0,1,1,0,1,0},
-                 {0,1,0,1,0,1,0,0,0,0}};
+  Map map = new Map();
+
 
   public Board() {
     rowN = 0;
@@ -27,61 +18,61 @@ public class Board extends JComponent implements KeyListener {
     direction = 2;
     testBoxX = 0;
     testBoxY = 0;
-
-    // set the size of your draw board
     setPreferredSize(new Dimension(720, 792));
     setVisible(true);
+    map.skeletonSpawn();
+    map.boosDrop();
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-
-    for (int i = 0; i < map.length; i++) {
-      for (int j = 0; j < map[i].length; j++) {
-        if (map[i][j] == 0) {
+    for (int i = 0; i < map.getMap().length; i++) {
+      for (int j = 0; j < map.getMap()[i].length; j++) {
+        if (map.getMap()[i][j] == 0) {
           PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
           image.draw(graphics);
-        } else if (map[i][j] == 1) {
+        } else if (map.getMap()[i][j] == 1) {
           PositionedImage image = new PositionedImage("images/wall.png", j * 72, i * 72);
           image.draw(graphics);
+        } else if (map.getMap()[i][j] == 2) {
+          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
+          image.draw(graphics);
+          PositionedImage skeleton = new PositionedImage("images/skeleton.png", j * 72, i * 72);
+          skeleton.draw(graphics);
+        } else if (map.getMap()[i][j] == 3) {
+          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
+          image.draw(graphics);
+          PositionedImage skeleton = new PositionedImage("images/boss.png", j * 72, i * 72);
+          skeleton.draw(graphics);
         }
       }
-    }
-    if (direction == 0) {
-      PositionedImage hero = new PositionedImage("images/hero-up.png", testBoxX, testBoxY);
-      hero.draw(graphics);
-    } else if (direction == 1) {
-      PositionedImage hero = new PositionedImage("images/hero-right.png", testBoxX, testBoxY);
-      hero.draw(graphics);
-    } else if (direction == 2) {
-      PositionedImage hero = new PositionedImage("images/hero-down.png", testBoxX, testBoxY);
-      hero.draw(graphics);
-    } else if (direction == 3) {
-      PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
-      hero.draw(graphics);
+      if (direction == 0) {
+        PositionedImage hero = new PositionedImage("images/hero-up.png", testBoxX, testBoxY);
+        hero.draw(graphics);
+      } else if (direction == 1) {
+        PositionedImage hero = new PositionedImage("images/hero-right.png", testBoxX, testBoxY);
+        hero.draw(graphics);
+      } else if (direction == 2) {
+        PositionedImage hero = new PositionedImage("images/hero-down.png", testBoxX, testBoxY);
+        hero.draw(graphics);
+      } else if (direction == 3) {
+        PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
+        hero.draw(graphics);
+      }
     }
   }
 
-
-
   public static void bordMain() {
-    // Here is how you set up a new window and adding our board to it
     JFrame frame = new JFrame("Dungeon Master");
     Board board = new Board();
     frame.add(board);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
     frame.pack();
-    // Here is how you can add a key event listener
-    // The board object will be notified when hitting any key
-    // with the system calling one of the below 3 methods
     frame.addKeyListener(board);
-    // Notice (at the top) that we can only do this
-    // because this Board class (the type of the board object) is also a KeyListener
   }
 
-  // To be a KeyListener the class needs to have these 3 methods in it
   @Override
   public void keyTyped(KeyEvent e) {
   }
@@ -121,42 +112,16 @@ public class Board extends JComponent implements KeyListener {
         testBoxX -= 72;
       }
     }
-//    stayInBounds();
-//    borders();
     repaint();
   }
 
-//  public void borders() {
-//  if (testBoxX < 0) {
-//      testBoxX += 72;
-//    } else if (testBoxX >= 720) {
-//      testBoxX -= 72;
-//    } else if (testBoxY < 0) {
-//      testBoxY += 72;
-//    } else if (testBoxY >= 792) {
-//      testBoxY -= 72;
-//    }
-//  }
-//
-//  public void stayInBounds() {
-//    if (rowN < 0) {
-//      rowN = 0;
-//    } else if (rowN > map.length) {
-//      rowN = map.length -1;
-//    } else if (colN < 0) {
-//      colN = 0;
-//    } else if (colN > map[0].length) {
-//        colN = map[0].length;
-//      }
-//    }
-
     public boolean isNotAvailable() {
-    if ((rowN < 0 || rowN >= map.length || colN < 0 || colN >= map[0].length) || map[rowN][colN] == 1) {
+    if ((rowN < 0 || rowN >= map.getMap().length || colN < 0 || colN >= map.getMap()[0].length) || map.getMap()[rowN][colN] == 1) {
       return true;
     } else {
       return false;
     }
-    }
+  }
 
   @Override
   public void keyReleased(KeyEvent e) {
