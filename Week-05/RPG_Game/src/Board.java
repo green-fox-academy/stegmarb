@@ -6,13 +6,24 @@ import java.awt.event.KeyListener;
 public class Board extends JComponent implements KeyListener {
   int testBoxX;
   int testBoxY;
+  int[][] map = {{0,0,0,1,0,1,0,0,0,0},
+                 {0,0,0,1,0,1,0,1,1,0},
+                 {0,1,1,1,0,1,0,1,1,0},
+                 {0,0,0,0,0,1,0,0,0,0},
+                 {1,1,1,1,0,1,1,1,1,0},
+                 {0,1,0,1,0,0,0,0,1,0},
+                 {0,1,0,1,0,1,1,0,1,0},
+                 {0,0,0,0,0,1,1,0,1,0},
+                 {0,1,1,1,0,0,0,0,1,0},
+                 {0,0,0,1,0,1,1,0,1,0},
+                 {0,1,0,1,0,1,0,0,0,0}};
 
   public Board() {
     testBoxX = 0;
     testBoxY = 0;
 
     // set the size of your draw board
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(720, 792));
     setVisible(true);
   }
 
@@ -22,16 +33,13 @@ public class Board extends JComponent implements KeyListener {
     graphics.fillRect(testBoxX, testBoxY, 72, 72);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    int[][] map = new int [10] [10];
-    for (int row[] : map) {
-      for (int column : row) {
-        column = 0;
-      }
-    }
     for (int i = 0; i < map.length; i++) {
       for (int j = 0; j < map[i].length; j++) {
         if (map[i][j] == 0) {
           PositionedImage image = new PositionedImage("images/floor.png", j*72, i*72);
+          image.draw(graphics);
+        } else if (map[i][j] == 1) {
+          PositionedImage image = new PositionedImage("images/wall.png", j*72, i*72);
           image.draw(graphics);
         }
       }
