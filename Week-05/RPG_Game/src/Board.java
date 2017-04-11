@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
+  int rowN = 0;
+  int colN = 0;
   int direction;
   int testBoxX;
   int testBoxY;
@@ -20,6 +22,8 @@ public class Board extends JComponent implements KeyListener {
                  {0,1,0,1,0,1,0,0,0,0}};
 
   public Board() {
+    rowN = 0;
+    colN = 0;
     direction = 2;
     testBoxX = 0;
     testBoxY = 0;
@@ -32,6 +36,7 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
+
     for (int i = 0; i < map.length; i++) {
       for (int j = 0; j < map[i].length; j++) {
         if (map[i][j] == 0) {
@@ -84,37 +89,76 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyPressed(KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 72;
       direction = 0;
+      testBoxY -= 72;
+      rowN--;
+      if (isNotAvailable()) {
+        rowN++;
+        testBoxY += 72;
+      }
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 72;
       direction = 2;
+      testBoxY += 72;
+      rowN++;
+      if (isNotAvailable()) {
+        rowN--;
+        testBoxY -= 72;
+      }
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 72;
       direction = 3;
+      testBoxX -= 72;
+      colN--;
+      if (isNotAvailable()) {
+        colN++;
+        testBoxX += 72;
+      }
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 72;
       direction = 1;
+      testBoxX += 72;
+      colN++;
+      if (isNotAvailable()) {
+        colN--;
+        testBoxX -= 72;
+      }
     }
-    borders();
+//    stayInBounds();
+//    borders();
     repaint();
   }
 
-  public void borders() {
-  if (testBoxX < 0) {
-      testBoxX += 72;
-    } else if (testBoxX >= 720) {
-      testBoxX -= 72;
-    } else if (testBoxY < 0) {
-      testBoxY += 72;
-    } else if (testBoxY >= 792) {
-      testBoxY -= 72;
+//  public void borders() {
+//  if (testBoxX < 0) {
+//      testBoxX += 72;
+//    } else if (testBoxX >= 720) {
+//      testBoxX -= 72;
+//    } else if (testBoxY < 0) {
+//      testBoxY += 72;
+//    } else if (testBoxY >= 792) {
+//      testBoxY -= 72;
+//    }
+//  }
+//
+//  public void stayInBounds() {
+//    if (rowN < 0) {
+//      rowN = 0;
+//    } else if (rowN > map.length) {
+//      rowN = map.length -1;
+//    } else if (colN < 0) {
+//      colN = 0;
+//    } else if (colN > map[0].length) {
+//        colN = map[0].length;
+//      }
+//    }
+
+    public boolean isNotAvailable() {
+    if (map[rowN][colN] == 1 || rowN < 0 || rowN >= map.length || colN < 0 || colN >= map[rowN].length) {
+      return true;
+    } else {
+      return false;
     }
-  }
+    }
 
   @Override
   public void keyReleased(KeyEvent e) {
-    // When the up or down keys hit, we change the position of our box
-    // and redraw to have a new picture with the new coordinates
   }
 }
