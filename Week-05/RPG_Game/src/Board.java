@@ -35,10 +35,10 @@ public class Board extends JComponent implements KeyListener {
     for (int i = 0; i < map.length; i++) {
       for (int j = 0; j < map[i].length; j++) {
         if (map[i][j] == 0) {
-          PositionedImage image = new PositionedImage("images/floor.png", j*72, i*72);
+          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
           image.draw(graphics);
         } else if (map[i][j] == 1) {
-          PositionedImage image = new PositionedImage("images/wall.png", j*72, i*72);
+          PositionedImage image = new PositionedImage("images/wall.png", j * 72, i * 72);
           image.draw(graphics);
         }
       }
@@ -86,7 +86,7 @@ public class Board extends JComponent implements KeyListener {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       testBoxY -= 72;
       direction = 0;
-    } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       testBoxY += 72;
       direction = 2;
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -96,7 +96,20 @@ public class Board extends JComponent implements KeyListener {
       testBoxX += 72;
       direction = 1;
     }
+    borders();
     repaint();
+  }
+
+  public void borders() {
+  if (testBoxX < 0) {
+      testBoxX += 72;
+    } else if (testBoxX >= 720) {
+      testBoxX -= 72;
+    } else if (testBoxY < 0) {
+      testBoxY += 72;
+    } else if (testBoxY >= 792) {
+      testBoxY -= 72;
+    }
   }
 
   @Override
