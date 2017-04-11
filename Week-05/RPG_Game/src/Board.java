@@ -10,16 +10,17 @@ public class Board extends JComponent implements KeyListener {
   int testBoxX;
   int testBoxY;
   Map map = new Map();
+  Hero hero = new Hero();
 
 
   public Board() {
+    setPreferredSize(new Dimension(720, 832));
+    setVisible(true);
     rowN = 0;
     colN = 0;
     direction = 2;
     testBoxX = 0;
     testBoxY = 0;
-    setPreferredSize(new Dimension(720, 792));
-    setVisible(true);
     map.skeletonSpawn();
     map.boosDrop();
   }
@@ -61,9 +62,14 @@ public class Board extends JComponent implements KeyListener {
         hero.draw(graphics);
       }
     }
+    graphics.setColor(Color.WHITE);
+    graphics.fillRect(0, 792,720,40);
+    graphics.setColor(Color.BLACK);
+    graphics.setFont(new Font ("Courier New", 1, 17));
+    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
   }
 
-  public static void bordMain() {
+  public static void boardMain() {
     JFrame frame = new JFrame("Dungeon Master");
     Board board = new Board();
     frame.add(board);
