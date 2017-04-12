@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-  private int rowN;
-  private int colN;
+  private static int rowN;
+  private static int colN;
   private int direction;
   private int testBoxX;
   private int testBoxY;
@@ -32,32 +32,31 @@ public class Board extends JComponent implements KeyListener {
     Render render = new Render();
     render.renderMap(graphics);
     render.renderEnemy(graphics);
-      if (direction == 0) {
-        PositionedImage hero = new PositionedImage("images/hero-up.png", testBoxX, testBoxY);
-        hero.draw(graphics);
-      } else if (direction == 1) {
-        PositionedImage hero = new PositionedImage("images/hero-right.png", testBoxX, testBoxY);
-        hero.draw(graphics);
-      } else if (direction == 2) {
-        PositionedImage hero = new PositionedImage("images/hero-down.png", testBoxX, testBoxY);
-        hero.draw(graphics);
-      } else if (direction == 3) {
-        PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
-        hero.draw(graphics);
-      }
-      render.renderHub(graphics);
-//    graphics.setColor(Color.WHITE);
-//    graphics.fillRect(0, 792,720,60);
-//    graphics.setColor(Color.BLACK);
-//    graphics.setFont(new Font ("Courier New", 1, 17));
-//    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
-//    if (map.getMap()[rowN][colN] == 2 ) {
-//      graphics.setColor(Color.BLACK);
-//      graphics.setFont(new Font ("Courier New", 1, 17));
-//      graphics.drawString( skeleton.name+ " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 190, 835);
-//    } else if (map.getMap()[rowN][colN] == 3) {
-//      graphics.drawString( boss.name+ " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
-//    }
+    if (direction == 0) {
+      PositionedImage hero = new PositionedImage("images/hero-up.png", testBoxX, testBoxY);
+      hero.draw(graphics);
+    } else if (direction == 1) {
+      PositionedImage hero = new PositionedImage("images/hero-right.png", testBoxX, testBoxY);
+      hero.draw(graphics);
+    } else if (direction == 2) {
+      PositionedImage hero = new PositionedImage("images/hero-down.png", testBoxX, testBoxY);
+      hero.draw(graphics);
+    } else if (direction == 3) {
+      PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
+      hero.draw(graphics);
+    }
+    graphics.setColor(Color.WHITE);
+    graphics.fillRect(0, 792, 720, 60);
+    graphics.setColor(Color.BLACK);
+    graphics.setFont(new Font("Courier New", 1, 17));
+    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
+    if (map.getMap()[rowN][colN] == 2) {
+      graphics.setColor(Color.BLACK);
+      graphics.setFont(new Font("Courier New", 1, 17));
+      graphics.drawString(skeleton.name + " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 150, 835);
+    } else if (map.getMap()[rowN][colN] == 3) {
+      graphics.drawString(boss.name + " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
+    }
   }
 
   public static void boardMain() {
@@ -112,6 +111,10 @@ public class Board extends JComponent implements KeyListener {
     repaint();
   }
 
+
+
+
+
     public boolean isNotAvailable() {
     if ((rowN < 0 || rowN >= map.getMap().length || colN < 0 || colN >= map.getMap()[0].length) || map.getMap()[rowN][colN] == 1) {
       return true;
@@ -120,19 +123,35 @@ public class Board extends JComponent implements KeyListener {
     }
   }
 
+//  public void battle() {
+//    if (map.getMap()[Board.getRowN()][Board.getColN()] == 3 && hero.hp > 0) {
+//      if (hero.sp + (2 * hero.rollingDice()) > boss.dp) {
+//        boss.hp -= hero.sp + (2 * hero.rollingDice());
+//      }
+//      if ((boss.sp + (2 * boss.rollingDice())) > hero.dp) {
+//        hero.hp -= (boss.sp + (2 * boss.rollingDice()));
+//      } else {
+//        map.getMap()[Board.getRowN()][Board.getColN()] = 0;
+//        hero.level++;
+//      }
+//    } else if (map.getMap()[Board.getRowN()][Board.getColN()] == 2) {
+// skeleton.hp-=hero.sp+(2*hero.rollingDice());
+//      skeleton.hp = 0;
+//      map.getMap()[Board.getRowN()][Board.getColN()] = 0;
+//    } else {
+//      return;
+//    }
+//  }
+
   @Override
   public void keyReleased(KeyEvent e) {
   }
 
-  public int getRowN() {
+  public static int getRowN() {
     return rowN;
   }
 
-  public int getColN() {
+  public static int getColN() {
     return colN;
-  }
-
-  public int getDirection() {
-    return direction;
   }
 }

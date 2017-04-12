@@ -2,9 +2,6 @@ import java.awt.*;
 
 public class Render {
   Map map = new Map();
-  static Hero hero = new Hero();
-  Skeleton skeleton = new Skeleton();
-  Boss boss = new Boss();
 
   public void renderMap(Graphics graphics) {
     for (int i = 0; i < map.getMap().length; i++) {
@@ -33,19 +30,5 @@ public class Render {
       }
     }
   }
-
-  public void renderHub(Graphics graphics) {
-    graphics.setColor(Color.WHITE);
-    graphics.fillRect(0, 792,720,60);
-    graphics.setColor(Color.BLACK);
-    graphics.setFont(new Font ("Courier New", 1, 17));
-    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
-    if (map.getMap()[hero.getRowN()][hero.getColN()] == 2 ) {
-      graphics.setColor(Color.BLACK);
-      graphics.setFont(new Font ("Courier New", 1, 17));
-      graphics.drawString( skeleton.name+ " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 190, 835);
-    } else if (map.getMap()[hero.getRowN()][hero.getColN()] == 3) {
-      graphics.drawString( boss.name+ " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
-    }
-  }
 }
+
