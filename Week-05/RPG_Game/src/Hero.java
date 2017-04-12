@@ -7,4 +7,6 @@ public class Hero extends Character {
     level = 1;
     maxHp = hp;
   }
+
+
 }

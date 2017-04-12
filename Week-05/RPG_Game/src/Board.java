@@ -4,24 +4,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-  int rowN = 0;
-  int colN = 0;
-  int direction;
-  int testBoxX;
-  int testBoxY;
+  private int rowN;
+  private int colN;
+  private int direction;
+  private int testBoxX;
+  private int testBoxY;
   Map map = new Map();
   Hero hero = new Hero();
+  Skeleton skeleton = new Skeleton();
+  Boss boss = new Boss();
+
 
 
   public Board() {
-    setPreferredSize(new Dimension(720, 832));
+    setPreferredSize(new Dimension(720, 852));
     setVisible(true);
     rowN = 0;
     colN = 0;
     direction = 2;
     testBoxX = 0;
     testBoxY = 0;
-    map.skeletonSpawn();
+    map.threeSkeletonSpawn();
     map.boosDrop();
   }
 
@@ -63,10 +66,17 @@ public class Board extends JComponent implements KeyListener {
       }
     }
     graphics.setColor(Color.WHITE);
-    graphics.fillRect(0, 792,720,40);
+    graphics.fillRect(0, 792,720,60);
     graphics.setColor(Color.BLACK);
     graphics.setFont(new Font ("Courier New", 1, 17));
     graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
+    if (map.getMap()[rowN][colN] == 2 ) {
+      graphics.setColor(Color.BLACK);
+      graphics.setFont(new Font ("Courier New", 1, 17));
+      graphics.drawString( skeleton.name+ " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 190, 835);
+    } else if (map.getMap()[rowN][colN] == 3) {
+      graphics.drawString( boss.name+ " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
+    }
   }
 
   public static void boardMain() {
@@ -118,6 +128,7 @@ public class Board extends JComponent implements KeyListener {
         testBoxX -= 72;
       }
     }
+//    map.enemyMoving();
     repaint();
   }
 
@@ -131,5 +142,13 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent e) {
+  }
+
+  public int getRowN() {
+    return rowN;
+  }
+
+  public int getColN() {
+    return colN;
   }
 }

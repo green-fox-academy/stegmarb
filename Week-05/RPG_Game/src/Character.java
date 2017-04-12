@@ -4,6 +4,7 @@ public class Character {
   int dp;
   int sp;
   int level;
+  String name;
 
   public int rollingDice() {
     int dice = (int) (Math.random()*6);
