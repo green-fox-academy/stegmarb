@@ -8,5 +8,6 @@ public class Hero extends Character {
     setSp(5 + d6());
     setLevel(1);
     setHp(getMaxHp());
+    setName("Hero");
   }
 }

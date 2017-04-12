@@ -6,29 +6,38 @@ import java.awt.event.KeyListener;
 import java.util.List;
 
 public class Engine extends JComponent implements KeyListener{
-private List<Game> elements = new ArrayList<Game>();
-  
-
+  private List<Game> elements = new ArrayList<Game>();
   int testBoxX;
   int testBoxY;
 
   public Engine() {
     testBoxX = 0;
     testBoxY = 0;
-
-    // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
+    listFiller();
+  }
+
+  public void listFiller() {
+    Map map = new Map();
+    for (int i = 0; i < map.getMap().length; i++) {
+      for (int j = 0; j < map.getMap()[i].length; j++) {
+        if (map.getMap()[i][j] == 0) {
+          elements.add(new Floor(j, i));
+        } else {
+          elements.add(new Wall(j, i));
+        }
+      }
+    }
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    graphics.fillRect(testBoxX, testBoxY, 72, 72);
-    // here you have a 720x720 canvas
-    // you can create and draw an image using the class below e.g.
-    PositionedImage image = new PositionedImage("img/floor.png", 300, 300);
-    image.draw(graphics);
+    for (Game element : elements) {
+      PositionedImage image = new PositionedImage(element.getImage(), element.getPosX()*72, element.getPosY()*72);
+      image.draw(graphics);
+    }
   }
 
   public static void main(String[] args) {
@@ -41,21 +50,16 @@ private List<Game> elements = new ArrayList<Game>();
     frame.addKeyListener(engine);
   }
 
-  // To be a KeyListener the class needs to have these 3 methods in it
   @Override
   public void keyTyped(KeyEvent e) {
-
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
-
   }
 
-  // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
-    // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       testBoxY -= 72;
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -65,7 +69,6 @@ private List<Game> elements = new ArrayList<Game>();
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
       testBoxX -= 72;
     }
-    // and redraw to have a new picture with the new coordinates
     repaint();
   }
 }

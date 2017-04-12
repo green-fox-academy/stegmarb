@@ -33,4 +33,6 @@ public class Game {
   public void setImage(String image) {
     this.image = image;
   }
+
+
 }

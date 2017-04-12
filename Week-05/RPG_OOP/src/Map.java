@@ -24,7 +24,6 @@ public class Map {
       return coordinates + randomPosition();
     }
   }
-
   public int[][] getMap() {
     return map;
   }
