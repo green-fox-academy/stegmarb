@@ -7,12 +7,9 @@ import java.util.List;
 
 public class Engine extends JComponent implements KeyListener{
   private List<Game> elements = new ArrayList<Game>();
-  int testBoxX;
-  int testBoxY;
+  private Hero hero = new Hero();
 
   public Engine() {
-    testBoxX = 0;
-    testBoxY = 0;
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
     listFiller();
@@ -29,6 +26,7 @@ public class Engine extends JComponent implements KeyListener{
         }
       }
     }
+    elements.add(hero);
   }
 
   @Override
@@ -61,13 +59,17 @@ public class Engine extends JComponent implements KeyListener{
   @Override
   public void keyReleased(KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 72;
+      hero.setPosY(hero.getPosY()-1);
+      hero.setImage("img/hero-up.png");
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 72;
+      hero.setPosY(hero.getPosY()+1);
+      hero.setImage("img/hero-down.png");
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 72;
+      hero.setPosX(hero.getPosX()+1);
+      hero.setImage("img/hero-right.png");
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 72;
+      hero.setPosX(hero.getPosX()-1);
+      hero.setImage("img/hero-left.png");
     }
     repaint();
   }
