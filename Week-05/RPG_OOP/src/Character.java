@@ -29,7 +29,7 @@ public class Character extends Game {
   }
 
   public Character() {
-
+    super();
   }
 
   public Character(int posX, int posY, String image) {
