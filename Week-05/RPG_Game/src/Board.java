@@ -13,7 +13,7 @@ public class Board extends JComponent implements KeyListener {
   Hero hero = new Hero();
   Skeleton skeleton = new Skeleton();
   Boss boss = new Boss();
-  
+
   public Board() {
     setPreferredSize(new Dimension(720, 852));
     setVisible(true);
@@ -45,18 +45,19 @@ public class Board extends JComponent implements KeyListener {
         PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
         hero.draw(graphics);
       }
-    graphics.setColor(Color.WHITE);
-    graphics.fillRect(0, 792,720,60);
-    graphics.setColor(Color.BLACK);
-    graphics.setFont(new Font ("Courier New", 1, 17));
-    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
-    if (map.getMap()[rowN][colN] == 2 ) {
-      graphics.setColor(Color.BLACK);
-      graphics.setFont(new Font ("Courier New", 1, 17));
-      graphics.drawString( skeleton.name+ " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 190, 835);
-    } else if (map.getMap()[rowN][colN] == 3) {
-      graphics.drawString( boss.name+ " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
-    }
+      render.renderHub(graphics);
+//    graphics.setColor(Color.WHITE);
+//    graphics.fillRect(0, 792,720,60);
+//    graphics.setColor(Color.BLACK);
+//    graphics.setFont(new Font ("Courier New", 1, 17));
+//    graphics.drawString("Hero (" + hero.level + ") HP: " + hero.hp + "/" + hero.maxHp + " | DP: " + hero.dp + " | SP: " + hero.sp, 190, 815);
+//    if (map.getMap()[rowN][colN] == 2 ) {
+//      graphics.setColor(Color.BLACK);
+//      graphics.setFont(new Font ("Courier New", 1, 17));
+//      graphics.drawString( skeleton.name+ " (" + skeleton.level + ") HP: " + skeleton.hp + "/" + skeleton.maxHp + " | DP: " + skeleton.dp + " | SP: " + skeleton.sp, 190, 835);
+//    } else if (map.getMap()[rowN][colN] == 3) {
+//      graphics.drawString( boss.name+ " (" + boss.level + ") HP: " + boss.hp + "/" + boss.maxHp + " | DP: " + boss.dp + " | SP: " + boss.sp, 190, 835);
+//    }
   }
 
   public static void boardMain() {
