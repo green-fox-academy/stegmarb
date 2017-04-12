@@ -10,4 +10,6 @@ public class Character {
     int dice = (int) (Math.random()*6);
     return dice+1;
   }
+
+
 }

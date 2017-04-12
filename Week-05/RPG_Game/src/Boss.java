@@ -5,6 +5,6 @@ public class Boss extends Character {
     hp = maxHp;
     dp = level/2 * rollingDice()+(rollingDice()/2);
     sp = level * rollingDice()+rollingDice();
-    String name = "Boss";
+    name = "Boss";
   }
 }

@@ -13,9 +13,7 @@ public class Board extends JComponent implements KeyListener {
   Hero hero = new Hero();
   Skeleton skeleton = new Skeleton();
   Boss boss = new Boss();
-
-
-
+  
   public Board() {
     setPreferredSize(new Dimension(720, 852));
     setVisible(true);
@@ -25,32 +23,15 @@ public class Board extends JComponent implements KeyListener {
     testBoxX = 0;
     testBoxY = 0;
     map.threeSkeletonSpawn();
-    map.boosDrop();
+    map.bossDrop();
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    for (int i = 0; i < map.getMap().length; i++) {
-      for (int j = 0; j < map.getMap()[i].length; j++) {
-        if (map.getMap()[i][j] == 0) {
-          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
-          image.draw(graphics);
-        } else if (map.getMap()[i][j] == 1) {
-          PositionedImage image = new PositionedImage("images/wall.png", j * 72, i * 72);
-          image.draw(graphics);
-        } else if (map.getMap()[i][j] == 2) {
-          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
-          image.draw(graphics);
-          PositionedImage skeleton = new PositionedImage("images/skeleton.png", j * 72, i * 72);
-          skeleton.draw(graphics);
-        } else if (map.getMap()[i][j] == 3) {
-          PositionedImage image = new PositionedImage("images/floor.png", j * 72, i * 72);
-          image.draw(graphics);
-          PositionedImage skeleton = new PositionedImage("images/boss.png", j * 72, i * 72);
-          skeleton.draw(graphics);
-        }
-      }
+    Render render = new Render();
+    render.renderMap(graphics);
+    render.renderEnemy(graphics);
       if (direction == 0) {
         PositionedImage hero = new PositionedImage("images/hero-up.png", testBoxX, testBoxY);
         hero.draw(graphics);
@@ -64,7 +45,6 @@ public class Board extends JComponent implements KeyListener {
         PositionedImage hero = new PositionedImage("images/hero-left.png", testBoxX, testBoxY);
         hero.draw(graphics);
       }
-    }
     graphics.setColor(Color.WHITE);
     graphics.fillRect(0, 792,720,60);
     graphics.setColor(Color.BLACK);
@@ -128,7 +108,6 @@ public class Board extends JComponent implements KeyListener {
         testBoxX -= 72;
       }
     }
-//    map.enemyMoving();
     repaint();
   }
 
@@ -150,5 +129,9 @@ public class Board extends JComponent implements KeyListener {
 
   public int getColN() {
     return colN;
+  }
+
+  public int getDirection() {
+    return direction;
   }
 }
