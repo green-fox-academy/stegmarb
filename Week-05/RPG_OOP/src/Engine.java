@@ -5,9 +5,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 
-public class Engine extends JComponent implements KeyListener{
+public class Engine extends JComponent implements KeyListener {
   private List<Game> elements = new ArrayList<Game>();
   private Hero hero = new Hero();
+  private Map map = new Map();
 
   public Engine() {
     setPreferredSize(new Dimension(720, 720));
@@ -16,13 +17,12 @@ public class Engine extends JComponent implements KeyListener{
   }
 
   public void listFiller() {
-    Map map = new Map();
     for (int i = 0; i < map.getMap().length; i++) {
       for (int j = 0; j < map.getMap()[i].length; j++) {
-        if (map.getMap()[i][j] == 0) {
-          elements.add(new Floor(j, i));
+        if (map.getMap()[j][i] == 0) {
+          elements.add(new Floor(i, j));
         } else {
-          elements.add(new Wall(j, i));
+          elements.add(new Wall(i, j));
         }
       }
     }
@@ -33,7 +33,7 @@ public class Engine extends JComponent implements KeyListener{
   public void paint(Graphics graphics) {
     super.paint(graphics);
     for (Game element : elements) {
-      PositionedImage image = new PositionedImage(element.getImage(), element.getPosX()*72, element.getPosY()*72);
+      PositionedImage image = new PositionedImage(element.getImage(), element.getPosX() * 72, element.getPosY() * 72);
       image.draw(graphics);
     }
   }
@@ -54,24 +54,33 @@ public class Engine extends JComponent implements KeyListener{
 
   @Override
   public void keyPressed(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+      if (map.isItFree(hero.getPosX(), hero.getPosY() - 1)) {
+        hero.moveUp();
+      }
+      hero.setImage("img/hero-up.png");
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      if (map.isItFree(hero.getPosX(), hero.getPosY() + 1)) {
+        hero.moveDown();
+      }
+      hero.setImage("img/hero-down.png");
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      if (map.isItFree(hero.getPosX() + 1, hero.getPosY())) {
+        hero.moveRight();
+      }
+      hero.setImage("img/hero-right.png");
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      if (map.isItFree(hero.getPosX() - 1, hero.getPosY())) {
+        hero.moveLeft();
+      }
+      hero.setImage("img/hero-left.png");
+    }
+    repaint();
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_UP) {
-      hero.setPosY(hero.getPosY()-1);
-      hero.setImage("img/hero-up.png");
-    } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      hero.setPosY(hero.getPosY()+1);
-      hero.setImage("img/hero-down.png");
-    } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      hero.setPosX(hero.getPosX()+1);
-      hero.setImage("img/hero-right.png");
-    } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-      hero.setPosX(hero.getPosX()-1);
-      hero.setImage("img/hero-left.png");
-    }
-    repaint();
+
   }
 }
 
