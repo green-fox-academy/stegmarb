@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import java.util.List;
 
 public class Engine extends JComponent implements KeyListener {
-  private List<Game> elements = new ArrayList<Game>();
+  private List<Game> elements = new ArrayList<>();
   private Hero hero = new Hero();
   private Map map = new Map();
 
@@ -27,7 +27,10 @@ public class Engine extends JComponent implements KeyListener {
       }
     }
     elements.add(hero);
+    elements.add(new Boss(map.splitAndGetX(), map.splitAndGetY()));
   }
+
+
 
   @Override
   public void paint(Graphics graphics) {
