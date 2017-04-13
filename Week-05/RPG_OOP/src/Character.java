@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Character extends Game {
   private int hp;
   private int maxHp;
@@ -45,6 +47,23 @@ public class Character extends Game {
       return;
     }
   }
+
+  public void heroStats(Graphics graphics, Character character) {
+    graphics.setColor(Color.WHITE);
+    graphics.fillRect(0, 792, 720, 60);
+    graphics.setColor(Color.BLACK);
+    graphics.setFont(new Font("Courier New", 1, 17));
+    graphics.drawString(character.getName() +" (" + character.getLevel() + ") HP: " + character.getHp() + "/" + character.getMaxHp() + " | DP: " + character.getDp() + " | SP: " + character.getSp(), 190, 745);
+  }
+
+  public void enemyStats(Graphics graphics, Character character) {
+    graphics.setColor(Color.WHITE);
+    graphics.fillRect(0, 792, 720, 60);
+    graphics.setColor(Color.BLACK);
+    graphics.setFont(new Font("Courier New", 1, 17));
+    graphics.drawString(character.getName() +" (" + character.getLevel() + ") HP: " + character.getHp() + "/" + character.getMaxHp() + " | DP: " + character.getDp() + " | SP: " + character.getSp(), 190, 775);
+  }
+
 
   public Character() {
     super();

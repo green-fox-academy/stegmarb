@@ -2,6 +2,7 @@ public class Hero extends Character {
 
   public Hero() {
     super(0,0,"img/hero-down.png");
+
   }
 
   public Hero(int posX, int posY) {

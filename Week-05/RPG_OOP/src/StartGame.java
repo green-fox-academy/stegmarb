@@ -7,7 +7,7 @@ public class StartGame {
         System.out.println(((Enemy) element).getName());
       }
     }
-//    Engine.setFrameElem();
+    Engine.setFrameElem();
 
   }
 }

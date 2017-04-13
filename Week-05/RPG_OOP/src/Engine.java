@@ -7,13 +7,14 @@ import java.util.List;
 
 public class Engine extends JComponent implements KeyListener {
   private List<Game> elements = new ArrayList<>();
-  private Hero hero = new Hero();
+  private Hero hero = new Hero(0,0);
   private Map map = new Map();
   private Enemy enemy = new Enemy();
   private int count = 0;
+  private int[] heroPosition = new int[2];
 
   public Engine() {
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(720, 780));
     setVisible(true);
     listFiller();
   }
@@ -43,12 +44,40 @@ public class Engine extends JComponent implements KeyListener {
     }
   }
 
+  public boolean isThereSomebody() {
+    for (Game element : elements) {
+      if (element instanceof Enemy) {
+        if (hero.getPosX() == element.getPosX() && hero.getPosY() == element.getPosY()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public Game giveThatMan() {
+    List<Game> temp = new ArrayList<>();
+    for (Game element : elements) {
+      if (element instanceof Enemy) {
+        if (hero.getPosX() == element.getPosX() && hero.getPosY() == element.getPosY()) {
+          temp.add(element);
+        }
+      }
+    }
+    return temp.get(0);
+  }
+
+
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
     for (Game element : elements) {
       PositionedImage image = new PositionedImage(element.getImage(), element.getPosX() * 72, element.getPosY() * 72);
       image.draw(graphics);
+    }
+    enemy.heroStats(graphics, hero);
+    if (isThereSomebody()) {
+      enemy.enemyStats(graphics, enemy);
     }
   }
 
@@ -69,6 +98,19 @@ public class Engine extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
+//    for (Game element : elements) {
+//      if (element instanceof Enemy) {
+//        if (element.getPosX() == heroPosition[0] && element.getPosY() == heroPosition[1]) {
+//          if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+//            System.out.println("Working");
+//            while (hero.isAlive(hero, element))
+//            hero.battle(hero, enemy);
+//            hero.battle(enemy, hero);
+//          }
+//        }
+//      }
+//    }
+//
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       if (map.isItFree(hero.getPosX(), hero.getPosY() - 1)) {
         hero.moveUp();
@@ -91,6 +133,9 @@ public class Engine extends JComponent implements KeyListener {
       hero.setImage("img/hero-left.png");
     }
     count++;
+    heroPosition[0] = hero.getPosX();
+    heroPosition[1] = hero.getPosY();
+
     if (count % 2 == 0) {
       for (Game element : elements) {
         if (element instanceof Enemy) {
