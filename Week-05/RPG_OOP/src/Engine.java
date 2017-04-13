@@ -93,16 +93,27 @@ public class Engine extends JComponent implements KeyListener {
     if (count % 2 == 0) {
       for (Game element : elements) {
         if (element instanceof Enemy) {
-        if (element instanceof Enemy) {
-          if (map.isItFree(element.getPosX(), element.getPosY() - 1)) {
-            ((Enemy) element).moveUp();
-          } else if (map.isItFree(element.getPosX(), element.getPosY() + 1)) {
-            ((Enemy) element).moveDown();
-          } else if (map.isItFree(element.getPosX() - 1, element.getPosY())) {
-            ((Enemy) element).moveLeft();
-          } else {
-            ((Enemy) element).moveRight();
-          }
+          int dice = (int) (Math.random() * 4);
+          switch (dice) {
+            case 0:
+              if (map.isItFree(element.getPosX(), element.getPosY() - 1)) {
+                ((Enemy) element).moveUp();
+              }
+              break;
+            case 1:
+              if (map.isItFree(element.getPosX(), element.getPosY() + 1)) {
+                ((Enemy) element).moveDown();
+              }
+              break;
+            case 2:
+              if (map.isItFree(element.getPosX() - 1, element.getPosY())) {
+                ((Enemy) element).moveLeft();
+              }
+              break;
+            case 3:
+              if (map.isItFree(element.getPosX() + 1, element.getPosY())) {
+                ((Enemy) element).moveRight();
+              }
           }
         }
       }
