@@ -27,7 +27,8 @@ public class Engine extends JComponent implements KeyListener {
         }
       }
     }
-    elements.add(new Boss(map.getRandomCoordinates()[0], map.getRandomCoordinates()[1]));
+    String randPos = map.randomPosition();
+    elements.add(new Boss(map.getRandomCoordinates(randPos)[0], map.getRandomCoordinates(randPos)[1]));
     renderSkeletons(enemy.getLevel());
     elements.add(hero);
   }
@@ -35,7 +36,8 @@ public class Engine extends JComponent implements KeyListener {
   public void renderSkeletons(int level) {
     int count = -2;
     while (count < level) {
-      elements.add(new Skeleton(map.getRandomCoordinates()[0], map.getRandomCoordinates()[1]));
+      String randPos = map.randomPosition();
+      elements.add(new Skeleton(map.getRandomCoordinates(randPos)[0], map.getRandomCoordinates(randPos)[1]));
       count++;
     }
   }

@@ -1,4 +1,6 @@
 public class Enemy extends Character{
+  private int[] randomPosition;
+
 
   public Enemy() {
     super();

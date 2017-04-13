@@ -33,8 +33,7 @@ public class Map {
     }
   }
 
-  public int[] getRandomCoordinates() {
-    String s = randomPosition();
+  public int[] getRandomCoordinates(String s) {
     String[] parts = s.split(";");
     int[] coordinates = {Integer.parseInt(parts[0]), Integer.parseInt(parts[1])};
     return coordinates;
