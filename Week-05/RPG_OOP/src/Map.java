@@ -1,5 +1,5 @@
 public class Map {
-  private int[][] map = {{0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+  private static int[][] map = {{0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
                          {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
                          {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
                          {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
@@ -24,25 +24,20 @@ public class Map {
 
   public String randomPosition() {
     String coordinates = "";
-    int preX = ((int) (Math.random() * (map[0].length - 2)) + 1);
-    int preY = ((int) (Math.random() * (map.length- 2)) + 1);
-    if(isItFree(preY, preX)) {
+    int preX = ((int) (Math.random() * (map[0].length - 1)));
+    int preY = ((int) (Math.random() * (map.length- 1)));
+    if(isItFree(preX, preY)) {
       return coordinates = Integer.toString(preX) + ";" + Integer.toString(preY);
     } else {
       return coordinates + randomPosition();
     }
   }
 
-  public int splitAndGetX() {
+  public int[] getRandomCoordinates() {
     String s = randomPosition();
     String[] parts = s.split(";");
-    return Integer.parseInt(parts[0]);
-  }
-
-  public int splitAndGetY() {
-    String s = randomPosition();
-    String[] parts = s.split(";");
-    return Integer.parseInt(parts[1]);
+    int[] coordinates = {Integer.parseInt(parts[0]), Integer.parseInt(parts[1])};
+    return coordinates;
   }
 
   public int[][] getMap() {

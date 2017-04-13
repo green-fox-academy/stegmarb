@@ -9,6 +9,7 @@ public class Engine extends JComponent implements KeyListener {
   private List<Game> elements = new ArrayList<>();
   private Hero hero = new Hero();
   private Map map = new Map();
+  private Enemy enemy = new Enemy();
 
   public Engine() {
     setPreferredSize(new Dimension(720, 720));
@@ -19,18 +20,25 @@ public class Engine extends JComponent implements KeyListener {
   public void listFiller() {
     for (int i = 0; i < map.getMap().length; i++) {
       for (int j = 0; j < map.getMap()[i].length; j++) {
-        if (map.getMap()[j][i] == 0) {
-          elements.add(new Floor(i, j));
+        if (map.getMap()[i][j] == 0) {
+          elements.add(new Floor(j, i));
         } else {
-          elements.add(new Wall(i, j));
+          elements.add(new Wall(j, i));
         }
       }
     }
+    elements.add(new Boss(map.getRandomCoordinates()[0], map.getRandomCoordinates()[1]));
+    renderSkeletons(enemy.getLevel());
     elements.add(hero);
-    elements.add(new Boss(map.splitAndGetX(), map.splitAndGetY()));
   }
 
-
+  public void renderSkeletons(int level) {
+    int count = -2;
+    while (count < level) {
+      elements.add(new Skeleton(map.getRandomCoordinates()[0], map.getRandomCoordinates()[1]));
+      count++;
+    }
+  }
 
   @Override
   public void paint(Graphics graphics) {
