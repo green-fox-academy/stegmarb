@@ -26,7 +26,7 @@ public class Map {
     String coordinates = "";
     int preX = ((int) (Math.random() * (map[0].length - 1)));
     int preY = ((int) (Math.random() * (map.length- 1)));
-    if(isItFree(preX, preY)) {
+    if(isItFree(preX, preY) && preX != 0 && preY != 0) {
       return coordinates = Integer.toString(preX) + ";" + Integer.toString(preY);
     } else {
       return coordinates + randomPosition();

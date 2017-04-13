@@ -10,6 +10,7 @@ public class Engine extends JComponent implements KeyListener {
   private Hero hero = new Hero();
   private Map map = new Map();
   private Enemy enemy = new Enemy();
+  private int count = 0;
 
   public Engine() {
     setPreferredSize(new Dimension(720, 720));
@@ -87,6 +88,24 @@ public class Engine extends JComponent implements KeyListener {
         hero.moveLeft();
       }
       hero.setImage("img/hero-left.png");
+    }
+    count++;
+    if (count % 2 == 0) {
+      for (Game element : elements) {
+        if (element instanceof Enemy) {
+        if (element instanceof Enemy) {
+          if (map.isItFree(element.getPosX(), element.getPosY() - 1)) {
+            ((Enemy) element).moveUp();
+          } else if (map.isItFree(element.getPosX(), element.getPosY() + 1)) {
+            ((Enemy) element).moveDown();
+          } else if (map.isItFree(element.getPosX() - 1, element.getPosY())) {
+            ((Enemy) element).moveLeft();
+          } else {
+            ((Enemy) element).moveRight();
+          }
+          }
+        }
+      }
     }
     repaint();
   }
