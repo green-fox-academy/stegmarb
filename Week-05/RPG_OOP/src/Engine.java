@@ -52,8 +52,8 @@ public class Engine extends JComponent implements KeyListener {
     }
   }
 
-  public static void main(String[] args) {
-    JFrame frame = new JFrame("RPG Game");
+  public static void setFrameElem() {
+    JFrame frame = new JFrame("Dungeon Warrior");
     Engine engine = new Engine();
     frame.add(engine);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +61,7 @@ public class Engine extends JComponent implements KeyListener {
     frame.pack();
     frame.addKeyListener(engine);
   }
+
 
   @Override
   public void keyTyped(KeyEvent e) {
@@ -124,6 +125,10 @@ public class Engine extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
 
+  }
+
+  public List<Game> getElements() {
+    return elements;
   }
 }
 

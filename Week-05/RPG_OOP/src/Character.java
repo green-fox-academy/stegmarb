@@ -28,6 +28,24 @@ public class Character extends Game {
     return dice+1;
   }
 
+  public boolean isAlive(Character attacker, Character defender) {
+    if (attacker.getHp() <=0 || defender.getHp() <= 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public void battle(Character attacker, Character defender) {
+    int attackerSv = attacker.getSp() + (2*d6());
+    if (attackerSv > defender.getDp()) {
+      defender.setHp(defender.getHp()-attackerSv);
+    }
+    if (attacker.getHp() <=0 || defender.getHp() <= 0){
+      return;
+    }
+  }
+
   public Character() {
     super();
   }
