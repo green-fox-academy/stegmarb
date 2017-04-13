@@ -11,12 +11,14 @@ public class Engine extends JComponent implements KeyListener {
   private Map map = new Map();
   private Enemy enemy = new Enemy();
   private int count = 0;
+  private int level = 1;
   private int[] heroPosition = new int[2];
 
   public Engine() {
     setPreferredSize(new Dimension(720, 780));
     setVisible(true);
     listFiller();
+    spawnEnemies();
   }
 
   public void listFiller() {
@@ -29,6 +31,9 @@ public class Engine extends JComponent implements KeyListener {
         }
       }
     }
+  }
+
+  public void spawnEnemies() {
     String randPos = map.randomPosition();
     elements.add(new Boss(map.getRandomCoordinates(randPos)[0], map.getRandomCoordinates(randPos)[1]));
     renderSkeletons(enemy.getLevel());
@@ -39,7 +44,7 @@ public class Engine extends JComponent implements KeyListener {
     int count = -2;
     while (count < level) {
       String randPos = map.randomPosition();
-      elements.add(new Skeleton(map.getRandomCoordinates(randPos)[0], map.getRandomCoordinates(randPos)[1]));
+      elements.add(new Skeleton(map.getRandomCoordinates(randPos)[0], map.getRandomCoordinates(randPos)[1], level));
       count++;
     }
   }
@@ -55,16 +60,16 @@ public class Engine extends JComponent implements KeyListener {
     return false;
   }
 
-  public Game giveThatMan() {
-    List<Game> temp = new ArrayList<>();
+  public Character giveThatMan() {
+    Character temp = new Character();
     for (Game element : elements) {
       if (element instanceof Enemy) {
         if (hero.getPosX() == element.getPosX() && hero.getPosY() == element.getPosY()) {
-          temp.add(element);
+          temp = (Character) element;
         }
       }
     }
-    return temp.get(0);
+    return temp;
   }
 
 
@@ -77,7 +82,7 @@ public class Engine extends JComponent implements KeyListener {
     }
     enemy.heroStats(graphics, hero);
     if (isThereSomebody()) {
-      enemy.enemyStats(graphics, enemy);
+      enemy.enemyStats(graphics, giveThatMan());
     }
   }
 
