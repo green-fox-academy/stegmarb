@@ -10,7 +10,8 @@ public class Skeleton extends Enemy{
     setMaxHp( 2 * getLevel() *d6());
     setDp(getLevel()/2 * d6());
     setSp(getLevel()* d6());
-    setHp(getMaxHp());
+    setHp(52);
+    //    setHp(getMaxHp());
     setName("Skeleton");
   }
 }

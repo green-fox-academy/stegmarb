@@ -49,12 +49,21 @@ public class Engine extends JComponent implements KeyListener {
     }
   }
 
-  public boolean isThereSomebody() {
+  public boolean isThereSomebodyStat() {
     for (Game element : elements) {
       if (element instanceof Enemy) {
         if (hero.getPosX() == element.getPosX() && hero.getPosY() == element.getPosY()) {
           return true;
         }
+      }
+    }
+    return false;
+  }
+
+  public boolean isThereSomebody(Game element) {
+    if (element instanceof Enemy) {
+      if (hero.getPosX() == element.getPosX() && hero.getPosY() == element.getPosY()) {
+        return true;
       }
     }
     return false;
@@ -81,7 +90,7 @@ public class Engine extends JComponent implements KeyListener {
       image.draw(graphics);
     }
     enemy.heroStats(graphics, hero);
-    if (isThereSomebody()) {
+    if (isThereSomebodyStat()) {
       enemy.enemyStats(graphics, giveThatMan());
     }
   }
@@ -103,19 +112,24 @@ public class Engine extends JComponent implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-//    for (Game element : elements) {
-//      if (element instanceof Enemy) {
-//        if (element.getPosX() == heroPosition[0] && element.getPosY() == heroPosition[1]) {
-//          if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//            System.out.println("Working");
-//            while (hero.isAlive(hero, element))
-//            hero.battle(hero, enemy);
-//            hero.battle(enemy, hero);
-//          }
-//        }
-//      }
-//    }
-//
+    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      for (Game element : elements) {
+        if (isThereSomebody(element)) {
+          System.out.println("Working");
+          hero.battle(hero, (Character) element);
+          if (((Enemy) element).getHp() <= 0) {
+            elements.remove(element);
+            break;
+          } else {
+            enemy.battle((Character) element, hero);
+            if (hero.getHp() <= 0) {
+              elements.add(new Game(120, 200, "img/game-over.png"));
+              break;
+            }
+          }
+        }
+      }
+    }
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       if (map.isItFree(hero.getPosX(), hero.getPosY() - 1)) {
         hero.moveUp();
@@ -171,6 +185,7 @@ public class Engine extends JComponent implements KeyListener {
     }
     repaint();
   }
+
 
   @Override
   public void keyReleased(KeyEvent e) {
