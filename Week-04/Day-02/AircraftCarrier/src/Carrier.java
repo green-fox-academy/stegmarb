@@ -9,6 +9,13 @@ public class Carrier {
   public void addAircraft(Aircraft plane ) {
     carrier.add(plane);
   }
+  public void carrierStatus() {
+    int damageSum = 0;
+    for (int i = 0; i < carrier.size() ; i++) {
+      damageSum+=carrier.get(i).getBaseDamage()*carrier.get(i).getMaxAmmo();
+    }
+    System.out.println("Aircraft count: " + carrier.size() + ", Ammo storage: " + ammo + ", Total damage: " + damageSum);
+  }
 
   public void printOut() {
     for (int i = 0; i < carrier.size(); i++) {

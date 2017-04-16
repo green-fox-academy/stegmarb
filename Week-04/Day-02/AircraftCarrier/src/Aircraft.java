@@ -6,7 +6,7 @@ public class Aircraft {
 
   public int fight() {
     int damage = ammoStore*baseDamage;
-    this.ammoStore = 0;
+    ammoStore = 0;
     return damage;
   }
 
@@ -32,6 +32,14 @@ public class Aircraft {
     this.maxAmmo = maxAmmo;
     this.baseDamage = baseDamage;
     this.ammoStore = 0;
+  }
+
+  public int getBaseDamage() {
+    return baseDamage;
+  }
+
+  public int getMaxAmmo() {
+    return maxAmmo;
   }
 }
 
