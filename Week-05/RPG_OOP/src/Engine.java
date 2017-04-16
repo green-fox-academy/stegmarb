@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.image.ImageObserver;
+import java.nio.file.Paths;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,7 +13,6 @@ public class Engine extends JComponent implements KeyListener {
   private Map map = new Map();
   private Enemy enemy = new Enemy();
   private int count = 0;
-  private int level = 1;
   private int[] heroPosition = new int[2];
 
   public Engine() {
@@ -93,6 +94,10 @@ public class Engine extends JComponent implements KeyListener {
     if (isThereSomebodyStat()) {
       enemy.enemyStats(graphics, giveThatMan());
     }
+    if (hero.getHp() <= 0){
+      PositionedImage image = new PositionedImage("img/game-over.png", 0, 150);
+      image.draw(graphics);
+    }
   }
 
   public static void setFrameElem() {
@@ -119,11 +124,13 @@ public class Engine extends JComponent implements KeyListener {
           hero.battle(hero, (Character) element);
           if (((Enemy) element).getHp() <= 0) {
             elements.remove(element);
+            hero.setLevel(hero.getLevel()+1);
             break;
           } else {
             enemy.battle((Character) element, hero);
             if (hero.getHp() <= 0) {
-              elements.add(new Game(120, 200, "img/game-over.png"));
+              elements.remove(hero);
+              elements.add(new Game(360, 360, "img/game-over.png"));
               break;
             }
           }
