@@ -9,9 +9,9 @@ public class Garden {
   }
 
   public boolean isThirsty(int t) {
-      if (plants.get(t).getName() == "Flower" && plants.get(t).getThirst() < 5) {
+      if (plants.get(t) instanceof Flower && plants.get(t).getThirst() < 5) {
         return true;
-      } else if (plants.get(t).getName() == "Tree" && plants.get(t).getThirst() < 10) {
+      } else if (plants.get(t) instanceof Tree && plants.get(t).getThirst() < 10) {
         return true;
       } else {
         return false;

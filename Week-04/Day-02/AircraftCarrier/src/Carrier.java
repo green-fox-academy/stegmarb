@@ -9,6 +9,7 @@ public class Carrier {
   public void addAircraft(Aircraft plane ) {
     carrier.add(plane);
   }
+
   public void carrierStatus() {
     int damageSum = 0;
     for (int i = 0; i < carrier.size() ; i++) {
@@ -44,9 +45,5 @@ public class Carrier {
 
   public Carrier(int ammo) {
     this.ammo = ammo;
-  }
-
-  public List<Aircraft> getCarrier() {
-    return carrier;
   }
 }
