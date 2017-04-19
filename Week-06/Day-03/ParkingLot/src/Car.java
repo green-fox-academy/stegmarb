@@ -16,4 +16,12 @@ public class Car {
     Color[] colors = Color.values();
     return colors[(int) (Math.random()*colors.length)];
   }
+
+  public Type getType() {
+    return type;
+  }
+
+  public Color getColor() {
+    return color;
+  }
 }
