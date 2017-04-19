@@ -2,11 +2,6 @@ public class SortTheArray {
   public static void main(String[] args) {
     Double[] test = {1.2, 2.9, 3.8, 4.45, 5.487};
     sortMethod(test);
-    System.out.println(test[0]);
-    System.out.println(test[1]);
-    System.out.println(test[2]);
-    System.out.println(test[3]);
-    System.out.println(test[4]);
   }
 
   public static <T extends Number> void sortMethod(T[] array) {

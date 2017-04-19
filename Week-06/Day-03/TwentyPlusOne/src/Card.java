@@ -1,9 +1,18 @@
 public class Card {
-  private String color;
-  private int rank;
-  private String suit;
+  private Rank rank;
+  private Suit suit;
 
-  public Card() {
-    color = Color.BLACK;
+
+  public Card(Suit suit, Rank rank) {
+    this.suit = suit;
+    this.rank = rank;
+  }
+
+  public Rank getRank() {
+    return rank;
+  }
+
+  public Suit getSuit() {
+    return suit;
   }
 }
