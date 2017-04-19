@@ -1,5 +1,7 @@
 public class Zoo {
+  public enum DIRECTIONS {UP, DOWN, LEFT, RIGHT}
   public static void main(String[] args) {
+
 
     Reptile reptile = new Reptile("Crocodile");
     Mammal mammal = new Mammal("Koala");
