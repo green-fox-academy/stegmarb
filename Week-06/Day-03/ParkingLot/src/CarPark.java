@@ -27,6 +27,20 @@ public class CarPark {
     }
   }
 
+  public void allTypesNumber(HashMap<Enum, Integer> cars) {
+    Type[] types = Type.values();
+    for (int i = 0; i < Type.values().length; i++) {
+      System.out.println(types[i].toString() + " " + cars.get(types[i]));
+    }
+  }
+
+  public void allColorNumber(HashMap<Enum, Integer> cars) {
+    Color[] colors = Color.values();
+    for (int i = 0; i < Color.values().length; i++) {
+      System.out.println(colors[i].toString() + " " + cars.get(colors[i]));
+    }
+  }
+
   public List<Car> getCars() {
     return cars;
   }
