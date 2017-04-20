@@ -1,9 +1,11 @@
 package date;
 
 import javax.swing.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalField;
 import java.util.Scanner;
 
 public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
@@ -13,31 +15,46 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
     try {
       String[] dateString = str.split("-");
       LocalDate date = LocalDate.of(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
-    } catch (Exception e) {
-      return "nonDate";
-    }
-    return date;
+      return date;
+    } catch (Exception e) {}
+    return LocalDate.now();
   }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
-    return date.getMonth() + ". " + date.getDayOfMonth();
-//     TODO - return the date formatted: month & day (MM. dd.)
+    return date.getMonthValue() + ". " + date.getDayOfMonth();
   }
 
   @Override
   public boolean isAnniversaryToday(LocalDate date) {
+    if (date.equals(LocalDate.now())) {
+      return true;
+    } else {
+      return false;
+    }
 //     TODO - return with true if today is the same month+day as date
   }
 
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
+    int years;
+    if (LocalDate.now().getMonthValue() < birthday.getMonthValue()) {
+      years = LocalDate.now().getYear() - birthday.getYear()-1;
+    } else {
+      years = LocalDate.now().getYear() - birthday.getYear();
+    }
+    return years;
 //     TODO - return how many years age the input date 'birthday' was
   }
 
   @Override
   public int calculateDaysToNextAnniversary(LocalDate date) {
-//     TODO - the number of days remaining to the next anniversary of 'date' (e.g. if tomorrow, return 1)
+    int remaining = 0;
+    if (LocalDate.now().getDayOfYear() < date.getDayOfYear()) {
+      return (date.getDayOfYear() - LocalDate.now().getDayOfYear());
+    } else {
+      return remaining;
+    }
   }
 
   public static void main(String[] args) {
