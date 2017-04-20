@@ -10,13 +10,18 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
 
   @Override
   public LocalDate parseDate(String str) {
-    String[] dateString = str.split("-");
-    LocalDate date = LocalDate.of(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
+    try {
+      String[] dateString = str.split("-");
+      LocalDate date = LocalDate.of(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
+    } catch (Exception e) {
+      return "nonDate";
+    }
     return date;
   }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
+    return date.getMonth() + ". " + date.getDayOfMonth();
 //     TODO - return the date formatted: month & day (MM. dd.)
   }
 
