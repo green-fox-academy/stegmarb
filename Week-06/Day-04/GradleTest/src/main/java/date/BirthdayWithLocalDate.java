@@ -12,17 +12,12 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
 
   @Override
   public LocalDate parseDate(String str) {
-    try {
-      String[] dateString = str.split("-");
-      LocalDate date = LocalDate.of(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
-      return date;
-    } catch (Exception e) {}
-    return LocalDate.now();
+    return LocalDate.parse(str);
   }
 
   @Override
   public String printMonthAndDay(LocalDate date) {
-    return date.getMonthValue() + ". " + date.getDayOfMonth();
+    return date.getMonthValue() + ". " + date.getDayOfMonth() + ".";
   }
 
   @Override
@@ -37,13 +32,13 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
 
   @Override
   public int calculateAgeInYears(LocalDate birthday) {
-    int years;
-    if (LocalDate.now().getMonthValue() < birthday.getMonthValue()) {
-      years = LocalDate.now().getYear() - birthday.getYear()-1;
-    } else {
-      years = LocalDate.now().getYear() - birthday.getYear();
-    }
-    return years;
+//    int years;
+//    if (LocalDate.now().getMonthValue() < birthday.getMonthValue()) {
+//      years = LocalDate.now().getYear() - birthday.getYear()-1;
+//    } else {
+//      years = LocalDate.now().getYear() - birthday.getYear();
+//    }
+    return LocalDate.now().getYear() - birthday.getYear();
 //     TODO - return how many years age the input date 'birthday' was
   }
 
@@ -52,8 +47,10 @@ public class BirthdayWithLocalDate implements BirthdayCalculator<LocalDate> {
     int remaining = 0;
     if (LocalDate.now().getDayOfYear() < date.getDayOfYear()) {
       return (date.getDayOfYear() - LocalDate.now().getDayOfYear());
+    } else if (LocalDate.now().getDayOfYear() > date.getDayOfYear()) {
+      return 365 - (LocalDate.now().getDayOfYear() - date.getDayOfYear());
     } else {
-      return remaining;
+      return 0;
     }
   }
 
