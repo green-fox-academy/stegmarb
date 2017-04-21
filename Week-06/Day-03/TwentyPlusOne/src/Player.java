@@ -19,11 +19,19 @@ public class Player {
   }
 
   public int getBackValue() {
+    int aceCounter = 0;
     int value = 0;
     for (Card card : hand) {
-     value+=card.getRank().getRankPoints();
+      if (card.getRank() == Rank.ACE) {
+        aceCounter++;
+      }
+      value += card.getRank().getRankPoints();
     }
-    return value;
+    if (value > 21 && aceCounter != 0) {
+      return value - (aceCounter * 10);
+    } else {
+      return value;
+    }
   }
 
   public void printCards() {

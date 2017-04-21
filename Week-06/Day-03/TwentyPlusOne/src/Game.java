@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class Game {
   public static Player player = new Player("Player");
@@ -15,7 +14,7 @@ public class Game {
       firstDraw(deck);
       house.printCards();
       player.printCards();
-      System.out.println("Would you like to have one more card?");
+      System.out.println("Would you like to have one more card? (y/n)");
       playerResponse = scanner.nextLine();
       while (!playerResponse.equals("n")) {
         player.pullOneFromTop(deck);
@@ -24,27 +23,27 @@ public class Game {
           System.out.println("You are going bust! House wins!");
           break;
         } else {
-          System.out.println("Would you like to have one more card?");
+          System.out.println("Would you like to have one more card? (y/n)");
           playerResponse = scanner.nextLine();
         }
       }
       if (player.getBackValue() > 21) {
-        System.out.println("Next round?");
+        System.out.println("Next round? (y/stop)");
         playerResponse = scanner.nextLine();
       } else {
           while (house.getBackValue() < 17) {
             house.pullOneFromTop(deck);
             house.printCards();
-            if (house.getBackValue() > 21) {
-              System.out.println("The House going bust! You win");
-              break;
-            } else if (house.getBackValue() > 21 && house.getBackValue() < player.getBackValue()) {
-              System.out.println("Player wins!");
-            } else {
-              System.out.println("House wins!");
-            }
           }
-          System.out.println("Next round?");
+          if (house.getBackValue() > 21) {
+            System.out.println("The House going bust! Player wins!");
+            break;
+          } else if ((isBlackJack(player) && isBlackJack(house)) || house.getBackValue() == player.getBackValue() || house.getBackValue() > player.getBackValue()) {
+            System.out.println("House wins!");
+          } else if (house.getBackValue() < player.getBackValue()){
+            System.out.println("Player wins!");
+          }
+          System.out.println("Next round? (y/stop)");
           playerResponse = scanner.nextLine();
         }
       }
@@ -57,6 +56,13 @@ public class Game {
       } else {
         house.pullOneFromTop(deck);
       }
+    }
+  }
+  public static boolean isBlackJack(Player player) {
+    if ((player.getHand().size() == 2 && player.getBackValue() == 21) && (player.getHand().get(0).getRank() == Rank.ACE || player.getHand().get(1).getRank() == Rank.ACE)) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
