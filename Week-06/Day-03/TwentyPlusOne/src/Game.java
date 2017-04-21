@@ -1,5 +1,5 @@
-import javax.sound.midi.Soundbank;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Game {
   public static Player player = new Player("Player");
@@ -13,9 +13,24 @@ public class Game {
     player.printCards();
     System.out.println("Would you like to have one more card?");
     String playerResponde = scanner.nextLine();
-    while (!playerResponde.equals("n") && playerResponde.equals("y")) {
+    while (!playerResponde.equals("n")) {
       player.pullOneFromTop(deck);
       player.printCards();
+      if (player.getBackValue() > 21) {
+        System.out.println("You are going bust! House wins!");
+        break;
+      } else {
+        System.out.println("Would you like to have one more card?");
+        playerResponde = scanner.nextLine();
+      }
+    }
+    while (house.getBackValue() < 17) {
+      house.pullOneFromTop(deck);
+      house.printCards();
+      if (house.getBackValue() > 21) {
+        System.out.println("The House going bust! You win");
+        break;
+      }
     }
   }
 

@@ -9,10 +9,6 @@ public class Player {
     this.name = name;
   }
 
-  public void addCard(Card card) {
-    hand.add(card);
-  }
-
   public void pullOneFromTop(Deck deck) {
     hand.add(deck.getDeck().get(deck.getDeck().size()-1));
     deck.getDeck().remove(deck.getDeck().size()-1);
@@ -31,7 +27,7 @@ public class Player {
   }
 
   public void printCards() {
-    System.out.println("\n" + name + "'s hand is:");
+    System.out.println("\n" + name + "'s hand is:" + getBackValue());
     for (int i = 0; i < hand.size(); i++) {
       System.out.println(hand.get(i).getRank() + " " + hand.get(i).getSuit());
     }
