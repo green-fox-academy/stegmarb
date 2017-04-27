@@ -31,13 +31,12 @@ public class Game {
         System.out.println("Next round? (y/stop)");
         playerResponse = scanner.nextLine();
       } else {
-          while (house.getBackValue() < 17) {
+          while (house.getBackValue() < 17 || isBlackJack(player)) {
             house.pullOneFromTop(deck);
             house.printCards();
           }
           if (house.getBackValue() > 21) {
             System.out.println("The House going bust! Player wins!");
-            break;
           } else if ((isBlackJack(player) && isBlackJack(house)) || house.getBackValue() == player.getBackValue() || house.getBackValue() > player.getBackValue()) {
             System.out.println("House wins!");
           } else if (house.getBackValue() < player.getBackValue()){

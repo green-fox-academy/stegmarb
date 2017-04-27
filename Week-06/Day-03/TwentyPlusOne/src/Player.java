@@ -37,7 +37,7 @@ public class Player {
   public void printCards() {
     System.out.println("\n" + name + "'s hand is:" + getBackValue());
     for (int i = 0; i < hand.size(); i++) {
-      System.out.println(hand.get(i).getRank() + " " + hand.get(i).getSuit());
+      System.out.println(hand.get(i).getRank() + " of " + hand.get(i).getSuit());
     }
   }
 }
