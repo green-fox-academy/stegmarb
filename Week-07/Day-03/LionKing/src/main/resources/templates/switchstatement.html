@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<ul th:each="element : ${clients}"
+    th:switch="${element.name}">
+    <li th:case="'Zordon'" th:text="'Index: ' + ${elementStat.index} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType} + ' , Side: Bad Guy'"></li>
+    <li th:case="*" th:text="'Index: ' + ${elementStat.index} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType} + ' , Side: Good Guy'"></li>
+</ul>
+</body>
+</html>

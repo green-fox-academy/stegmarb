@@ -41,4 +41,17 @@ public class Exercise1 {
     model.addAttribute("clients", clients);
     return "clientlist";
   }
+
+  @RequestMapping("/exercise9")
+  public String arrayList(Model model){
+    List<BankAccount> clients = new ArrayList<>();
+    clients.add(new BankAccount("Simba", 2000, "lion"));
+    clients.add(new BankAccount("Nana", 1400, "female lion"));
+    clients.add(new BankAccount("Rafiki", 200, "monkey"));
+    clients.add(new BankAccount("Zordon", 1800, "bad lion"));
+    clients.add(new BankAccount( "Timon", 400, "meerkats"));
+    clients.add(new BankAccount("Pumba", 350, "warthog"));
+    model.addAttribute("clients", clients);
+    return "switchstatement";
+  }
 }
