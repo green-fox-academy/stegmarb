@@ -6,6 +6,6 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <span th:text="'Name: ' + ${name} + ', Balance: ' + ${balance} + ', Type: ' + ${animalType}"></span>
+    <span th:text="'Name: ' + ${name} + ', Balance: ' + ${#numbers.formatDecimal(balance, 1, 2, 'POINT')} + ', Type: ' + ${animalType}"></span>
 </body>
 </html>
