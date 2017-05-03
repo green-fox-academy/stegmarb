@@ -6,8 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class Exercise1 {
+  List<BankAccount> clients = new ArrayList<>();
+
+
+  public void fillClientList() {
+    clients.add(new BankAccount("Nana", 1400, "lion"));
+    clients.add(new BankAccount("Rafiki", 200, "monkey"));
+    clients.add(new BankAccount("Zordon", 1800, "lion"));
+    clients.add(new BankAccount( "Timon", 400, "meerkats"));
+    clients.add(new BankAccount("Pumba", 350, "warthog"));
+  }
+
   @RequestMapping("/exercise1")
   public String createBankAccount(Model model) {
     BankAccount bankAccount = new BankAccount("Simba", 2000, "lion");
@@ -23,4 +38,11 @@ public class Exercise1 {
     model.addAttribute("text", text);
     return "text";
   }
+
+  @RequestMapping("/exercise5")
+  public String array(Model model){
+    fillClientList();
+    model.addAttribute("clients", clients);
+    return "clientlist";
   }
+}
