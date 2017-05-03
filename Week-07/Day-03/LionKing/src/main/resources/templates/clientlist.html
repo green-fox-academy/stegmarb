@@ -7,7 +7,7 @@
 </head>
 <body>
 <ul th:each="element : ${clients}">
-    <li th:class="${element.animalType == 'lion'}? 'King' : ''" th:text="'Index: ' + ${elementStat.index} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType}"></li>
+    <li th:class="${element.animalType == 'lion'}? 'King' : ''" th:text="'Index: ' + ${elementStat.index} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType} + ' , Side: ' + ${element.animalType == 'bad lion'? 'Bad Guy' : 'Good Guy'}"></li>
 </ul>
 </body>
 </html>
