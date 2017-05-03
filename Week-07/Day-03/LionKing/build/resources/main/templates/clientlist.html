@@ -7,6 +7,6 @@
 </head>
 <body>
     <p th:each="element : ${clients}"
-       th:text="'Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType}"></p>
+       th:text="'Index: ' + ${elementStat.index} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType}"></p>
 </body>
 </html>

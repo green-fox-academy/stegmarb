@@ -12,16 +12,6 @@ import java.util.List;
 
 @Controller
 public class Exercise1 {
-  List<BankAccount> clients = new ArrayList<>();
-
-
-  public void fillClientList() {
-    clients.add(new BankAccount("Nana", 1400, "lion"));
-    clients.add(new BankAccount("Rafiki", 200, "monkey"));
-    clients.add(new BankAccount("Zordon", 1800, "lion"));
-    clients.add(new BankAccount( "Timon", 400, "meerkats"));
-    clients.add(new BankAccount("Pumba", 350, "warthog"));
-  }
 
   @RequestMapping("/exercise1")
   public String createBankAccount(Model model) {
@@ -41,7 +31,12 @@ public class Exercise1 {
 
   @RequestMapping("/exercise5")
   public String array(Model model){
-    fillClientList();
+    List<BankAccount> clients = new ArrayList<>();
+    clients.add(new BankAccount("Nana", 1400, "lion"));
+    clients.add(new BankAccount("Rafiki", 200, "monkey"));
+    clients.add(new BankAccount("Zordon", 1800, "lion"));
+    clients.add(new BankAccount( "Timon", 400, "meerkats"));
+    clients.add(new BankAccount("Pumba", 350, "warthog"));
     model.addAttribute("clients", clients);
     return "clientlist";
   }
