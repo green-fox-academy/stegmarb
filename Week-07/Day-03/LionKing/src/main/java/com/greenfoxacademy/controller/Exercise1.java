@@ -32,9 +32,10 @@ public class Exercise1 {
   @RequestMapping("/exercise5")
   public String array(Model model){
     List<BankAccount> clients = new ArrayList<>();
-    clients.add(new BankAccount("Nana", 1400, "lion"));
+    clients.add(new BankAccount("Simba", 2000, "lion"));
+    clients.add(new BankAccount("Nana", 1400, "female lion"));
     clients.add(new BankAccount("Rafiki", 200, "monkey"));
-    clients.add(new BankAccount("Zordon", 1800, "lion"));
+    clients.add(new BankAccount("Zordon", 1800, "bad lion"));
     clients.add(new BankAccount( "Timon", 400, "meerkats"));
     clients.add(new BankAccount("Pumba", 350, "warthog"));
     model.addAttribute("clients", clients);
