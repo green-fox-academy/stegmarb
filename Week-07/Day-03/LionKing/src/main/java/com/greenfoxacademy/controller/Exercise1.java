@@ -16,4 +16,11 @@ public class Exercise1 {
     model.addAttribute("animalType", bankAccount.getAnimalType());
     return "bankaccount";
   }
+
+  @RequestMapping("/exercise4")
+  public String stringInsert(Model model) {
+    String text = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+    model.addAttribute("text", text);
+    return "text";
+  }
   }
