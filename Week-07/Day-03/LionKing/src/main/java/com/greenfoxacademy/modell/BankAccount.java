@@ -11,6 +11,10 @@ public class BankAccount {
     this.animalType = animalType;
   }
 
+  public void addTen() {
+    balance+=10;
+  }
+
   public String getName() {
     return name;
   }
@@ -21,5 +25,17 @@ public class BankAccount {
 
   public String getAnimalType() {
     return animalType;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setBalance(int balance) {
+    this.balance = balance;
+  }
+
+  public void setAnimalType(String animalType) {
+    this.animalType = animalType;
   }
 }

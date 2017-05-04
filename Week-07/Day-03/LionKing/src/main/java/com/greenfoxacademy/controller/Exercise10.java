@@ -22,4 +22,8 @@ public class Exercise10 {
     model.addAttribute("clients", clients);
     return "buttons";
   }
+
+  public void addTen(BankAccount bankAccount) {
+    bankAccount.setBalance(bankAccount.getBalance()+10);
+  }
 }

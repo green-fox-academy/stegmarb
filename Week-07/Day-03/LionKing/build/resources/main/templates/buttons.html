@@ -6,6 +6,11 @@
     <meta charset="utf-8" />
 </head>
 <body>
-
+<form action="buttons.html">
+    <ul th:each="element : ${clients}">
+        <li th:text="'Index: ' + ${elementStat.count} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType} + ' , Side: ' + ${element.animalType == 'bad lion'? 'Bad Guy' : 'Good Guy'}"></li>
+        <input th:type="button" th:value="'Ten more zebras to ' + ${element.name}" th:onclick="${element.balace} += 10"/>
+    </ul>
+</form>
 </body>
 </html>
