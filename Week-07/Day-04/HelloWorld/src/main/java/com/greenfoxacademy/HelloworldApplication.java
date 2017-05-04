@@ -8,5 +8,8 @@ public class HelloworldApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloworldApplication.class, args);
+		HelloWorld helloWorld = new HelloWorld();
+		helloWorld.setMessage("Hello World!");
+		helloWorld.getMessage();
 	}
 }
