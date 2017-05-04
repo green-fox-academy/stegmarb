@@ -1,5 +1,7 @@
 package com.greenfoxacademy;
 
+import com.greenfoxacademy.color.BlueColor;
+import com.greenfoxacademy.color.RedColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,12 @@ public class HelloworldApplication implements CommandLineRunner {
   @Autowired
   HelloWorld helloWorld;
 
+  @Autowired
+  BlueColor blueColor;
+
+  @Autowired
+  RedColor redColor;
+
 	public static void main(String[] args) {
 		SpringApplication.run(HelloworldApplication.class, args);
 	}
@@ -19,5 +27,7 @@ public class HelloworldApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
 	  helloWorld.setMessage("Hello World!");
 	  helloWorld.getMessage();
+	  blueColor.paint();
+	  redColor.paint();
   }
 }
