@@ -1,17 +1,12 @@
 package com.greenfoxacademy;
 
-import com.greenfoxacademy.configuration.MessageConfiguration;
-import com.greenfoxacademy.configuration.MessageProceeder;
-import org.apache.catalina.core.ApplicationContext;
+import com.greenfoxacademy.service.MessageProceeder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan
 public class MessageservicesApplication implements CommandLineRunner {
 
 	@Autowired

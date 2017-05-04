@@ -1,7 +1,5 @@
 package com.greenfoxacademy.service;
 
-import com.greenfoxacademy.configuration.MessageService;
-
 public class TwitterService implements MessageService {
 
   @Override
