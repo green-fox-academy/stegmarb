@@ -19,9 +19,9 @@
   <img src="greenfox.png"/>
   <p th:text="'This is ' + ${fox.name} + '. Currently living on ' + ${fox.food} + ' and ' + ${fox.drink} + '. He knows ' + ${tricks} + ' tricks.'"></p>
   <h1>Known tricks</h1>
+  <span th:text="${tricks} == 0 ? 'You know no trics, yet. Go and learn some.' : ''"></span>
   <ul>
-      <li th:each="element : ${fox.tricks}"></li>
-      <span th:text="${element} == null ? 'You know no trics, yet. Go and learn some.' : ${element}"></span>
+    <li th:each="element : ${fox.tricks}" th:text="${element}"></li>
   </ul>
 </body>
 </html>
