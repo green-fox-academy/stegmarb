@@ -6,14 +6,17 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <h1>Lion King Bank Account</h1>
-    <ul>
-        <li  th:each="element : ${clients}">
-            <form th:action="@{/exercise10/addTen?index=}">
-                <span th:text="'Index: ' + ${elementStat.count} + ', Name: ' + ${element.name} + ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} + ', Type: ' + ${element.animalType} + ' , Side: ' + ${element.animalType == 'bad lion'? 'Bad Guy' : 'Good Guy'}"></span>
-                <input th:type="submit" th:value="'Ten more zebras to ' + ${element.name}"/>
-            </form>
-        </li>
-    </ul>
+  <h1>Lion King Bank Account</h1>
+  <ul>
+    <li  th:each="element : ${clients}">
+      <form th:action="@{/exercise10/addTen}">
+        <span th:text="'Index: ' + ${elementStat.count} + ', Name: ' + ${element.name} +
+         ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} +
+         ', Type: ' + ${element.animalType} + ' , Side: ' +
+         ${element.animalType == 'bad lion'? 'Bad Guy' : 'Good Guy'}"></span>
+        <input th:type="submit" th:value="'Ten more zebras to ' + ${element.name}"/>
+      </form>
+    </li>
+  </ul>
 </body>
 </html>

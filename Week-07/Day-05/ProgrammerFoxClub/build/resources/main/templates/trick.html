@@ -20,11 +20,7 @@
   <span>Tricks</span>
   <select name="tricks">
     <option></option>
-    <option value="Do back-flip">do back-flip</option>
-    <option value="Cook">cook</option>
-    <option value="Write program in Java">write program in Java</option>
-    <option value="Transparent vision">transparent vision</option>
-    <option value="Run like Ussain Bolt">run like Ussain Bolt</option>
+    <option th:each="trick, iter : ${tricks}" th:value="${trick}" th:text="${trick}"></option>
   </select>
   <input type="submit" value="Learn"/>
 </form>
