@@ -13,22 +13,24 @@
       <a href="/nutrition">Nutrition</a>
     </li>
   </ul>
-  <form method="post" action="/change">
+  <form method="post" action="/nutrition/change">
     <span>Food</span>
-    <select>
-      <option value="">gyros</option>
-      <option value="1">salad</option>
-      <option value="2">indian</option>
-      <option value="3">pestimese-food</option>
-      <option value="4">pizza</option>
+    <select name="food">
+      <option></option>
+      <option value="gyros">gyros</option>
+      <option value="salad">salad</option>
+      <option value="indian food">indian</option>
+      <option value="pestimese-food">pestimese-food</option>
+      <option value="pizza">pizza</option>
     </select>
     <span>Drink</span>
-    <select>
-      <option value="">water</option>
-      <option value="1">limonade</option>
-      <option value="2">coffe</option>
-      <option value="3">energy drink</option>
-      <option value="4">coce</option>
+    <select name="drink">
+      <option></option>
+      <option value="water">water</option>
+      <option value="limonade">limonade</option>
+      <option value="coffe">coffe</option>
+      <option value="energy drink">energy drink</option>
+      <option value="coke">coke</option>
     </select>
     <input type="submit" value="Change"/>
   </form>

@@ -31,4 +31,12 @@ public class Fox {
   public String getDrink() {
     return drink;
   }
+
+  public void setFood(String food) {
+    this.food = food;
+  }
+
+  public void setDrink(String drink) {
+    this.drink = drink;
+  }
 }
