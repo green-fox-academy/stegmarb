@@ -16,6 +16,10 @@ public class Fox {
     tricks = new ArrayList<>();
   }
 
+  public void addTricks(String trick) {
+    tricks.add(trick);
+  }
+
   public String getName() {
     return name;
   }

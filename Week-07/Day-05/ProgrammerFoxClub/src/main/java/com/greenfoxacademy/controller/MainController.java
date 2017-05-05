@@ -1,6 +1,9 @@
 package com.greenfoxacademy.controller;
 
+import com.greenfoxacademy.main.Drink;
+import com.greenfoxacademy.main.Food;
 import com.greenfoxacademy.main.Fox;
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
+  Food[] food = Food.values();
+  Drink[] drink = Drink.values();
+
   @Autowired
   private Fox fox;
 
@@ -20,7 +26,9 @@ public class MainController {
   }
 
   @RequestMapping("/nutrition")
-  public String nutrition() {
+  public String nutrition(Model model) {
+    model.addAttribute("foods", food);
+    model.addAttribute("drinks", drink);
     return "nutrition";
   }
 
@@ -38,7 +46,13 @@ public class MainController {
   }
 
   @RequestMapping("/trickCenter")
-  public String addTrick() {
+  public String trickPage() {
     return "trick";
+  }
+
+  @RequestMapping("/trickCenter/learn")
+  public String addTrick(@RequestParam("tricks") String trick) {
+    fox.addTricks(trick);
+    return "redirect:/trickCenter";
   }
 }

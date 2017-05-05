@@ -16,17 +16,18 @@
       <a href="/trickCenter">Trick center</a>
     </li>
   </ul>
-  <form method="post" action="/trickCenter/change">
-    <span>Tricks</span>
-    <select name="trick">
+  <form method="post" action="/nutrition/change">
+    <span>Food</span>
+    <select name="food">
       <option></option>
-      <option value="Do back-flip">do back-flip</option>
-      <option value="Cook">cook</option>
-      <option value="Write program in Java">write program in Java</option>
-      <option value="Transparent vision">transparent vision</option>
-      <option value="Run like Ussain Bolt">run like Ussain Bolt</option>
+      <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option>
     </select>
-    <input type="submit" value="Learn"/>
+    <span>Drink</span>
+    <select name="drink">
+      <option></option>
+      <option th:each="drink : ${drinks}" th:value="${drink}" th:text="${drink}"></option>
+    </select>
+    <input type="submit" value="Change"/>
   </form>
 </body>
 </html>
