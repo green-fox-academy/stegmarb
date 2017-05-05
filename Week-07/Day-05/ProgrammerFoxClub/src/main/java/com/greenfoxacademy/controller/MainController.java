@@ -36,4 +36,9 @@ public class MainController {
     fox.setFood(food);
     return "redirect:/nutrition";
   }
+
+  @RequestMapping("/trickCenter")
+  public String addTrick() {
+    return "trick";
+  }
 }
