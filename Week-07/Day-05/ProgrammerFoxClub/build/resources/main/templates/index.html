@@ -11,7 +11,7 @@
     </li>
   </ul>
   <img src="greenfox.png"/>
-  <p>This is Mr. Fox. Currently living on pizza and lemonade. He knows 2 tricks.</p>
+  <p th:text="'This is ' + ${fox.name} + '. Currently living on ' + ${fox.food} + ' and ' + ${fox.drink} + '. He knows ' + ${tricks} + ' tricks.'"></p>
   <h1>Known tricks</h1>
   <ul>
       <li>write HTML</li>
