@@ -14,8 +14,8 @@
   <p th:text="'This is ' + ${fox.name} + '. Currently living on ' + ${fox.food} + ' and ' + ${fox.drink} + '. He knows ' + ${tricks} + ' tricks.'"></p>
   <h1>Known tricks</h1>
   <ul>
-      <li>write HTML</li>
-      <li>code in Java</li>
+      <li th:each="element : ${fox.tricks}"></li>
+      <span th:text="${element} == null ? 'You know no trics, yet. Go and learn some.' : ${element}"></span>
   </ul>
 </body>
 </html>
