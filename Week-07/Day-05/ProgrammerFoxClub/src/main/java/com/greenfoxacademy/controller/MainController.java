@@ -17,4 +17,9 @@ public class MainController {
     model.addAttribute("tricks", fox.getTricks().size());
     return "index";
   }
+
+  @RequestMapping("/nutrition")
+  public String nutrition() {
+    return "nutrition";
+  }
 }
