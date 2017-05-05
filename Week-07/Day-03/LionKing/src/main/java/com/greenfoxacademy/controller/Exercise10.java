@@ -10,6 +10,9 @@ import java.util.List;
 
 @Controller
 public class Exercise10 {
+  public static int standardId = 0;
+  private int id;
+
   @RequestMapping("/exercise10")
   public String arrayList(Model model){
     List<BankAccount> clients = new ArrayList<>();
@@ -22,6 +25,11 @@ public class Exercise10 {
     model.addAttribute("clients", clients);
     return "buttons";
   }
+
+  @RequestMapping("/exercise10/addTen")
+//  public String addTen(clie) {
+//    addTen();
+//  }
 
   public void addTen(BankAccount bankAccount) {
     bankAccount.setBalance(bankAccount.getBalance()+10);

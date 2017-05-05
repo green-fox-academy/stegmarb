@@ -6,7 +6,8 @@
 </head>
 <body>
   <p th:each="hello : ${hellos}"
-     th:bgcolor="${color}"
+     th:style="|color:${color[iter.index % length]}; font-size: ${randomNumber}px|"
      th:text="${hello}"/>
+
 </body>
 </html>

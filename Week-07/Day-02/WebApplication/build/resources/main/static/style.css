@@ -1,3 +1,27 @@
 p {
+    color: forestgreen;
+}
 
+.color0 {
+    color: yellow;
+}
+
+.color1 {
+    color: crimson;
+}
+
+.color2 {
+    color: aqua;
+}
+
+.color3 {
+    color: lime;
+}
+
+.color4 {
+    color: purple;
+}
+
+.color5 {
+    color: blue;
 }

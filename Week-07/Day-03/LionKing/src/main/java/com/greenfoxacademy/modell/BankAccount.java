@@ -1,9 +1,11 @@
 package com.greenfoxacademy.modell;
 
 public class BankAccount {
+  public static int lastId = 0;
   private String name;
   private int balance;
   private String animalType;
+  private int id;
 
   public BankAccount(String name, int balance, String animalType) {
     this.name = name;
