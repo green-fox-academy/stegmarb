@@ -13,7 +13,7 @@ public class ToDo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private Long id;
   private String title;
   private boolean isUrgent;
   private boolean isDone;
@@ -30,8 +30,24 @@ public class ToDo {
     isDone = false;
   }
 
+  public boolean isActive() {
+    if (isDone == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @Override
   public String toString() {
     return title;
+  }
+
+  public boolean isDone() {
+    return isDone;
+  }
+
+  public boolean isUrgent() {
+    return isUrgent;
   }
 }

@@ -5,9 +5,18 @@
     <title>Todo List</title>
 </head>
 <body>
-  <h1>Todos for today:</h1>
-  <ul>
-    <li th:each="todo : ${todos}" th:text="${todo}"></li>
-  </ul>
+<h1>Todos for today:</h1>
+  <table border = "1">
+    <th>Id</th>
+    <th>Title</th>
+    <th>Is done?</th>
+    <th>Is urgent?</th>
+    <tr th:each="todo : ${todos}">
+      <td th:text="${todo.id}"></td>
+      <td th:text="${todo.title}"></td>
+      <td th:text="${todo.isDone() ? 'TRUE' : 'FALSE'}"></td>
+      <td th:text="${todo.isUrgent() ? 'TRUE' : 'FALSE'}"></td>
+    </tr>
+  </table>
 </body>
 </html>

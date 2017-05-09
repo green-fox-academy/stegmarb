@@ -19,6 +19,11 @@ public class TodoApplication implements CommandLineRunner{
 
   @Override
   public void run(String... args) throws Exception {
+	  ToDo todo = new ToDo();
+	  todo.setDone(true);
+	  todoRepository.save(todo);
     todoRepository.save(new ToDo("I have to learn Object Relational Mapping"));
+    todoRepository.save(new ToDo("Repeat this exercise one more time"));
+    todoRepository.save(new ToDo("Sell as many fidget spinner as possible"));
   }
 }
