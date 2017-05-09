@@ -29,4 +29,9 @@ public class ToDo {
     isUrgent = false;
     isDone = false;
   }
+
+  @Override
+  public String toString() {
+    return title;
+  }
 }
