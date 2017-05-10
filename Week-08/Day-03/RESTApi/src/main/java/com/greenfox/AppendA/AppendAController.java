@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppendAController {
   @RequestMapping(value = "/appenda/{appendable}", method = RequestMethod.GET)
   public Appended append(@PathVariable("appendable") String appendable) {
-    Appended whatewer = new Appended(appendable);
-    whatewer.appendWord();
-    return whatewer;
+    Appended whatever = new Appended(appendable);
+    whatever.appendWord();
+    return whatever;
   }
 
 }
