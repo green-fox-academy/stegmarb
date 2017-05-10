@@ -6,16 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Student {
-  private String name;
-  private String title;
+  private String welcome_message;
 
-  public Student(String name, String title) {
-    this.name = name;
-    this.title = title;
-  }
-
-  @Override
-  public String toString() {
-    return "Oh, hi there " + name + ", my dear " + title + "!";
+  public Student(String welcomeMessage) {
+    this.welcome_message = welcomeMessage;
   }
 }
