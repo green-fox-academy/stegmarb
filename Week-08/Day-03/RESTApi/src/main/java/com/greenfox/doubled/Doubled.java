@@ -1,4 +1,4 @@
-package com.greenfox.model;
+package com.greenfox.doubled;
 
 import lombok.Getter;
 import lombok.Setter;
