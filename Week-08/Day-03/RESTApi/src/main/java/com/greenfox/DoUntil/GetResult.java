@@ -15,11 +15,10 @@ public class GetResult {
   }
 
   public void sum(int number) {
-    int sum = 0;
+    this.result = 0;
     for (int i = number; i >= 0 ; i--) {
-      sum=+i;
+      this.result += i;
     }
-    result = sum;
   }
 
   public int factorial(int number) {
