@@ -1,16 +1,16 @@
 package com.greenfox.Model;
 
 public class Groot {
-  private String recieved;
+  private String received;
   private String translated;
 
   public Groot(String message) {
-    recieved = message;
+    received = message;
     translated = "I am Groot!";
   }
 
-  public String getRecieved() {
-    return recieved;
+  public String getReceived() {
+    return received;
   }
 
   public String getTranslated() {
