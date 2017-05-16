@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class PostService {
 
+//  this class could be used for holding a list of objects and store all the methods which are used for controller if not REST app is the case
   @Autowired
   PostRepository postRepository;
 
@@ -25,6 +26,14 @@ public class PostService {
 
   public void addPost(Post post) {
     postRepository.save(post);
+  }
+
+  public void upVote(Long id) {
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()+1);
+  }
+
+  public void downVote(Long id) {
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()-1);
   }
 
   public PostRepository getPostRepository() {
