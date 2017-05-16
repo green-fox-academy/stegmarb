@@ -22,7 +22,6 @@ public class Post {
     this.title = title;
     this.href = href;
     this.timestamp = new Date();
-    this.score = 0;
   }
 
   public long getId() {
