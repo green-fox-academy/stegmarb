@@ -7,7 +7,7 @@ public class Ship {
 
   private String received;
   private int amount;
-  private String ShipStatus;
+  private String shipStatus;
   private boolean ready;
 
   public Ship(String caliber, int amount, Cargo cargo) {
@@ -16,7 +16,7 @@ public class Ship {
     cargo.addAmmo(amount, caliber);
     cargo.setReady(cargo.ready());
     cargo.setShipStatus(cargo.shipStatus());
-    ShipStatus = cargo.getShipStatus();
+    shipStatus = cargo.getShipStatus();
     ready = cargo.isReady();
   }
 
@@ -29,7 +29,7 @@ public class Ship {
   }
 
   public String getShipStatus() {
-    return ShipStatus;
+    return shipStatus;
   }
 
   public boolean isReady() {

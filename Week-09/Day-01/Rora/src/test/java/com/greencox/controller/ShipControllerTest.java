@@ -2,6 +2,7 @@ package com.greencox.controller;
 
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,14 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.nio.charset.Charset;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.hamcrest.core.Is.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.hamcrest.core.Is.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ShipController.class)
@@ -32,5 +41,22 @@ public class ShipControllerTest {
   @Before
   public void setup() throws Exception {
     this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+  }
+
+  @Test
+  public void testShipControllerIfEverythingIsOk() throws Exception {
+    mockMvc.perform(get("/rocket"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.caliber25", is(0)))
+        .andExpect(jsonPath("$.shipStatus", is("empty")));
+  }
+
+  @Test
+  public void testAddFullLoadOfAmmo() throws Exception {
+    mockMvc.perform(get("/rocket/fill?caliber=.50&amount=12500"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.shipStatus", is("full")))
+        .andExpect(jsonPath("$.ready", is("true")))
+        .andExpect(jsonPath("$.amount", is(12500)));
   }
 }

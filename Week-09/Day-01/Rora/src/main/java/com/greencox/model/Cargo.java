@@ -1,9 +1,8 @@
 package com.greencox.model;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Cargo {
   private int caliber25;
   private int caliber30;
