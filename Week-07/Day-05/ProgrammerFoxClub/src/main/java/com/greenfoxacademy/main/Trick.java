@@ -5,10 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Trick {
-  private String[] tricks = {"Do back flip", "Cook", "Write program in Java", "Transparent vision", "Run like Ussain Bolt"};
+  List<String> tricks;
 
-  public String[] getTricks() {
-    return tricks;
+  public Trick() {
+    tricks = new ArrayList<>();
+    tricks.add("Do back flip");
+    tricks.add("Cook");
+    tricks.add("Write program in Java");
+    tricks.add("Transparent vision");
+    tricks.add("Run like Ussain Bolt");
   }
 
+  public List<String> getTricks() {
+    return tricks;
+  }
 }

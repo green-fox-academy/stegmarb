@@ -11,11 +11,11 @@ public class Post {
   private long id;
   private String title;
   private String href;
-  @Temporal(TemporalType.TIMESTAMP)
   private Date timestamp;
   private long score;
 
   public Post() {
+    this.timestamp = new Date();
   }
 
   public Post(String title, String href) {

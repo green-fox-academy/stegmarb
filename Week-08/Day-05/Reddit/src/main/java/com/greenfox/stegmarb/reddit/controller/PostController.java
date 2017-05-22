@@ -1,49 +1,47 @@
 package com.greenfox.stegmarb.reddit.controller;
 
 import com.greenfox.stegmarb.reddit.model.Post;
-import com.greenfox.stegmarb.reddit.repository.PostRepository;
+import com.greenfox.stegmarb.reddit.model.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
+@CrossOrigin("*")
 public class PostController {
 
   @Autowired
-  PostRepository postRepository;
+  private PostService postService;
 
   @RequestMapping("")
   public List<Post> listPosts() {
-    List<Post> posts = new ArrayList<>();
-    postRepository.findAll().forEach(posts::add);
-    return posts;
+    return postService.listAllPosts();
   }
 
   @RequestMapping("/{id}")
   public Post listOneItem(@PathVariable Long id) {
-    return postRepository.findOne(id);
+    return postService.listOneElement(id);
   }
 
   @RequestMapping(value = "", method = RequestMethod.POST)
   public void postOneItem(@RequestBody Post post) {
-    postRepository.save(post);
+    postService.addPost(post);
   }
 
   @RequestMapping(value = "/{id}/upvote", method = RequestMethod.PUT)
   public void upVote(@PathVariable Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()+1);
+    postService.upVote(id);
   }
 
   @RequestMapping(value = "/{id}/downvote", method = RequestMethod.PUT)
   public void downVote(@PathVariable Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()-1);
+    postService.downVote(id);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   public void deletePost(@PathVariable Long id) {
-    postRepository.delete(id);
+    postService.deletePost(id);
   }
 }

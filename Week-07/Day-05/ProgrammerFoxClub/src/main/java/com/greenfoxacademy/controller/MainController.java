@@ -18,13 +18,12 @@ import java.util.List;
 public class MainController {
   Food[] food = Food.values();
   Drink[] drink = Drink.values();
-  Trick trick = new Trick();
-  String[] tricks = trick.getTricks();
-  List<String> trickList = Arrays.asList(tricks);
-
 
   @Autowired
   private Fox fox;
+
+  @Autowired
+  private Trick trick;
 
   @RequestMapping("/")
   public String mainPage(Model model) {
@@ -55,16 +54,16 @@ public class MainController {
 
   @RequestMapping("/trickCenter")
   public String trickPage(Model model) {
-    model.addAttribute("tricks", tricks);
+    model.addAttribute("tricks", trick.getTricks());
     return "trick";
   }
 
   @RequestMapping("/trickCenter/learn")
   public String addTrick(@RequestParam("tricks") String trick) {
     fox.addTricks(trick);
-    for (int i = 0; i < trickList.size(); i++) {
-      if (trickList.get(i) == trick) {
-        trickList.remove(trickList.get(i));
+    for (int i = 0; i < this.trick.getTricks().size(); i++) {
+      if (this.trick.getTricks().get(i).equals(trick)) {
+        this.trick.getTricks().remove(this.trick.getTricks().get(i));
       }
     }
     return "redirect:/trickCenter";

@@ -10,4 +10,9 @@ public class foxConfiguration {
   public Fox fox() {
     return new Fox("Mr. Green", "salad", "water");
   }
+
+  @Bean
+  public Trick trick() {
+    return new Trick();
+  }
 }
