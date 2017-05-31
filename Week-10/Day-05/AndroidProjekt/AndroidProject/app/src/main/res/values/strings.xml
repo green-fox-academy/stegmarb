@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">P2P Chat App</string>
+    <string name="list">Item 1</string>
+    <string name="username">Hello World!</string>
+</resources>

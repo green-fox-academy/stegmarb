@@ -14,9 +14,16 @@
          ', Balance: ' + ${#numbers.formatDecimal(element.balance, 1, 2, 'POINT')} +
          ', Type: ' + ${element.animalType} + ' , Side: ' +
          ${element.animalType == 'bad lion'? 'Bad Guy' : 'Good Guy'}"></span>
-        <input th:type="submit" th:value="'Ten more zebras to ' + ${element.name}"/>
+        <input th:type="submit" th:value="${element.name}" th:name="name"/>
       </form>
     </li>
   </ul>
+  <p></p>
+  <form th:action="@{/exercise10/addNewElement}">
+    <input th:type="text" th:placeholder="Name" th:name="name"/>
+    <input th:type="text" th:placeholder="Balance" th:name="balance"/>
+    <input th:type="text" th:placeholder="Type" th:name="type"/>
+    <input th:type="submit" value="Add new element"/>
+  </form>
 </body>
 </html>
