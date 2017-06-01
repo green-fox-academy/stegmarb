@@ -15,13 +15,13 @@ import java.util.List;
 @Controller
 public class Exercise10 {
 
-  private List<BankAccount> clients = Arrays.asList(
+  private List<BankAccount> clients = new ArrayList<>(Arrays.asList(
     new BankAccount("Simba", 2000, "lion"),
     new BankAccount("Nana", 1400, "female lion"),
     new BankAccount("Rafiki", 200, "monkey"),
     new BankAccount("Zordon", 1800, "bad lion"),
     new BankAccount( "Timon", 400, "meerkats"),
-    new BankAccount("Pumba", 350, "warthog"));
+    new BankAccount("Pumba", 350, "warthog")));
 
   @RequestMapping("/exercise10")
   public String arrayList(Model model){
@@ -43,7 +43,6 @@ public class Exercise10 {
   public String addNewElement(@RequestParam("name") String name,
                               @RequestParam("balance") int balance,
                               @RequestParam("type") String type) {
-    clients = new ArrayList<>(clients);
     clients.add(new BankAccount(name, balance, type));
     return "redirect:/exercise10/";
   }

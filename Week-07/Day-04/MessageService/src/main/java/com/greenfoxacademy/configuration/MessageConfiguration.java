@@ -16,14 +16,13 @@ public class MessageConfiguration {
     return new MessageProceeder();
   }
 
-  @Bean
-  @Primary
-  public MessageService emailService() {
+  @Bean(name = "email")
+  public EmailService emailService() {
     return new EmailService();
   }
 
-  @Bean
-  public MessageService tweetService() {
+  @Bean(name = "tweet")
+  public TwitterService tweetService() {
     return new TwitterService();
   }
 }

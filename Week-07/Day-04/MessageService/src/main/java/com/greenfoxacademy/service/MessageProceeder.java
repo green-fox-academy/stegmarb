@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class MessageProceeder {
   @Autowired
-  MessageService messageService;
-  String message;
-  String email;
+  EmailService emailService;
+
+  @Autowired
+  TwitterService twitterService;
 
   public MessageProceeder() {
-    messageService = new MessageService() {
-      @Override
-      public void sendingMessage(String message, String email) {
-
-      }
-    };
   }
 
   public void processMessage(String message, String address) {
-    messageService.sendingMessage(message, address);
+    String[] strings = address.split("@");
+    if (strings[0].equals("")) {
+      twitterService.sendingMessage(message,address);
+    } else {
+      emailService.sendingMessage(message, address);
+    }
   }
 }
