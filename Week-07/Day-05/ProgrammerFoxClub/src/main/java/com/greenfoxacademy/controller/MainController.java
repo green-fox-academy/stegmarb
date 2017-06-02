@@ -68,4 +68,10 @@ public class MainController {
     }
     return "redirect:/trickCenter";
   }
+
+  @RequestMapping("/trickCenter/newtrick")
+  public String addNewTrick(@RequestParam("newTrick") String newTrick) {
+    trick.addTrick(newTrick);
+    return "redirect:/trickCenter";
+  }
 }

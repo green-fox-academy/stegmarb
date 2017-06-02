@@ -24,5 +24,11 @@
   </select>
   <input type="submit" value="Learn"/>
 </form>
+<p></p>
+<form th:action="@{/trickCenter/newtrick}" th:method="post">
+  <span th:text="'Add new trick to list'"></span>
+  <input th:type="text" name="newTrick"/>
+  <input th:type="submit" value="Add new trick"/>
+</form>
 </body>
 </html>
