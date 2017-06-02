@@ -5,11 +5,8 @@ import com.greenfox.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class TodoController {
 
   @Autowired
   TodoRepository todoRepository;
-
+  private Long id;
   @RequestMapping("/")
   public String main(Model model, @RequestParam(value = "isActive", defaultValue = "", required = false) String isActive) {
     if (isActive.equals("true")) {
@@ -38,9 +35,41 @@ public class TodoController {
     return "todolist";
   }
 
-  @RequestMapping("/list")
-  @ResponseBody
-  public String list(Model model) {
-    return "This is my first todo";
+  @GetMapping("/add")
+  public String addPage() {
+    return "addNewTodo";
+  }
+
+  @PostMapping("/add/new")
+  public String addNewTodo(@RequestParam("todo") String todo) {
+    todoRepository.save(new ToDo(todo));
+    return "redirect:/todo/";
+  }
+
+  @RequestMapping("/{id}/delete")
+  public String deleteTodo(@PathVariable("id") Long id) {
+    todoRepository.delete(id);
+    return "redirect:/todo/";
+  }
+
+  @GetMapping("/{id}/edit")
+  public String editTodo(Model model, @PathVariable("id") Long id) {
+    model.addAttribute("title", todoRepository.findOne(id).getTitle());
+    this.id = id;
+    return "edittodo";
+  }
+
+  @RequestMapping("/edit/save")
+  public String saveChanges(@RequestParam("todo") String todo,
+                            @RequestParam(name = "done", required = false) String isDone,
+                            @RequestParam(name = "urgent", required = false) String isUrgent) {
+    ToDo tempTodo = todoRepository.findOne(id);
+    if (!todo.equals("")) {
+      tempTodo.setTitle(todo);
+    }
+    tempTodo.setDone(Boolean.valueOf(isDone));
+    tempTodo.setUrgent(Boolean.valueOf(isUrgent));
+    todoRepository.save(tempTodo);
+    return "redirect:/todo/";
   }
 }

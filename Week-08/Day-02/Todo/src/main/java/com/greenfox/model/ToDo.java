@@ -30,6 +30,12 @@ public class ToDo {
     isDone = false;
   }
 
+  public ToDo(String title, Boolean urgency, Boolean done) {
+    this.title = title;
+    isUrgent = urgency;
+    isDone = done;
+  }
+
   public boolean isActive() {
     if (isDone == true) {
       return true;
