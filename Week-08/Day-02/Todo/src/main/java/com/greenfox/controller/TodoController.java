@@ -55,6 +55,8 @@ public class TodoController {
   @GetMapping("/{id}/edit")
   public String editTodo(Model model, @PathVariable("id") Long id) {
     model.addAttribute("title", todoRepository.findOne(id).getTitle());
+    model.addAttribute("urgent", todoRepository.findOne(id).isUrgent());
+    model.addAttribute("done", todoRepository.findOne(id).isDone());
     this.id = id;
     return "edittodo";
   }

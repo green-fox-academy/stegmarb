@@ -10,11 +10,11 @@
   <span th:text="'Todo Description:'"></span>
   <input th:type="text" name="todo" th:placeholder="${title}"/>
   <p></p>
-  <span th:text="'Urgent'"></span>
-  <input th:type="checkbox" name="urgent" value="true" checked="checked"/>
-  <p></p>
   <span th:text="'Done'"></span>
-  <input th:type="checkbox" name="done" value="true" />
+  <input th:type="checkbox" name="done" value="true" th:checked="${done ? 'checked' : ''}"/>
+  <p></p>
+  <span th:text="'Urgent'"></span>
+  <input th:type="checkbox" name="urgent" value="true" th:checked="${urgent ? 'checked' : ''}"/>
   <p></p>
   <input th:type="submit" th:value="Submit"/>
   <a href="/todo/">cancel</a>
